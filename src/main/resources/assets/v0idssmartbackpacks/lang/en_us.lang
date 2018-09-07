@@ -42,7 +42,7 @@ item.v0idssmartbackpacks.dragon_scales.name=Ender Dragon Scales
 
 vsb.txt.backpack.desc.rf=%d/%d FE
 vsb.txt.upgrade.damage_bar.desc=Provides a durability bar to the backpack|Allows to see how full the backpack is at a glance|Sneak right-click to invert the display function
-vsb.txt.upgrade.nesting.desc=Allows nesting backpacks in a backpack with this upgrade|Nested backpacks will have full functionality
+vsb.txt.upgrade.nesting.desc=Allows nesting backpacks in a backpack with this upgrade|Nested backpacks will have full functionality|Nested backpacks can be opened by right clicking them
 vsb.txt.upgrade.filter.desc=Allows filtering items for some upgrades|Has buttons for advanced filtering options|Filters can be nested
 vsb.txt.upgrade.pulling.desc=Will auto-collect items from the ground into the backpack|Can be filtered
 vsb.txt.upgrade.compressor.desc=Will try to compress items inside of the backpack|Will try a 3x3 recipe first, then a 2x2|Can be filtered
@@ -65,7 +65,7 @@ vsb.txt.upgrade.induction_coil.desc=Allows the Pulverising Upgrade and the Smelt
 vsb.txt.upgrade.charging.desc=Will use FE of the backpack to instantly charge the items inside of it
 vsb.txt.upgrade.feeding.desc=Will automatically feed the holder with food from the backpack|Uses the best food it can find|Food that restores more hunger than needed will not be selected|Can be filtered
 vsb.txt.upgrade.water_spring.desc=Will fill all containers inside the backpack with water
-vsb.txt.upgrade.ender_storage.desc=Will push backpack contents into an Ender Storage network|Useless if Ender Storage is not installed|Backpacks won't be pushed|Any dyes can be used|Can be filtered
+vsb.txt.upgrade.ender_storage.desc=Will push backpack contents into an Ender Storage/Multi Storage network|Useless if Ender Storage or Multi Storage are not installed|Backpacks won't be pushed|Any dyes can be used|If both Ender Storage and Multi storage are installed sneak right click to change the network|Only pushes into public networks|Can be filtered
 vsb.txt.upgrade.soulbound.desc=Will make the backpack stay in the inventory after death|The worn backpack will also stay worn
 vsb.txt.upgrade.mending.desc=Will use the experience of the holder to repair items inside of the backpack|Only items that can be enchanted with mending can be repaired|Will use 2 experience per durability repaired
 vsb.txt.upgrade.air_bags.desc=Will provide some air to breathe underwater
