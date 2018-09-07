@@ -40,18 +40,23 @@ public abstract class UpgradeFiltered extends ItemSimple implements IUpgrade, IG
         {
             ItemStack is = playerIn.getHeldItem(handIn);
             int slot = handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : -1;
-            this.openContainer((EntityPlayerMP) playerIn, is, slot, handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : 40);
+            this.openContainer((EntityPlayerMP) playerIn, is, slot, handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : 40, true);
             return new ActionResult<>(EnumActionResult.SUCCESS, is);
         }
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
+    public void openContainer(EntityPlayerMP player, ItemStack stack, int slot, int slotID, boolean inventory)
+    {
+        VSBUtils.openContainer(player, new ContainerUpgradeFiltered(player.inventory, stack, slot));
+        VSBNet.sendOpenGUI(player, slotID, inventory, slot, EnumGuiType.UPGRADE);
+    }
+
     @Override
     public void openContainer(EntityPlayerMP player, ItemStack stack, int slot, int slotID)
     {
-        VSBUtils.openContainer(player, new ContainerUpgradeFiltered(player.inventory, stack, slot));
-        VSBNet.sendOpenGUI(player, slotID, true, slot, EnumGuiType.UPGRADE);
+        this.openContainer(player, stack, slot, slotID, false);
     }
 
     @Nullable

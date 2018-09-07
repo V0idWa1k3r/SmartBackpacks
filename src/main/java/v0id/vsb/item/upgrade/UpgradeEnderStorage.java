@@ -295,9 +295,9 @@ public class UpgradeEnderStorage extends UpgradeFiltered
     }
 
     @Override
-    public void openContainer(EntityPlayerMP player, ItemStack stack, int slot, int slotID)
+    public void openContainer(EntityPlayerMP player, ItemStack stack, int slot, int slotID, boolean inventory)
     {
         VSBUtils.openContainer(player, new ContainerUpgradeEnderStorage(player.inventory, stack, slot));
-        VSBNet.sendOpenGUI(player, slotID, true, slot, EnumGuiType.UPGRADE_ENDER_STORAGE);
+        VSBNet.sendOpenGUI(player, slotID, inventory, slot, EnumGuiType.UPGRADE_ENDER_STORAGE);
     }
 }
