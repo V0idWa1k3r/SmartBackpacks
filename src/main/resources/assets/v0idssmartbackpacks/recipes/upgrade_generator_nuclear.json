@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_generator_wind",
+        "data": 0
+    },
+    "pattern": [
+        " R ",
+        "RUR",
+        " R "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "R": {
+            "item": "#URANIUM"
+        }
+    }
+}

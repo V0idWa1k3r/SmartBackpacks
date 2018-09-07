@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_energy_basic",
+        "data": 0
+    },
+    "pattern": [
+        "IGI",
+        " U ",
+        " R "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "R": {
+            "item": "#BLOCK_REDSTONE"
+        },
+        "I": {
+            "item": "#INGOT_IRON"
+        },
+        "G": {
+            "item": "#INGOT_GOLD"
+        }
+    }
+}

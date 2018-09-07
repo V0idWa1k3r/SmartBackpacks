@@ -1,0 +1,12 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:dragon_scales",
+        "count": 8
+    },
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:dragon_egg"
+        }
+    ]
+}

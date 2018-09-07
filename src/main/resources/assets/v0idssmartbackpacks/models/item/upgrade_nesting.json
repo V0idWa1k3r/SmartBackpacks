@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "v0idssmartbackpacks:items/upgrades/nesting"
+    }
+}

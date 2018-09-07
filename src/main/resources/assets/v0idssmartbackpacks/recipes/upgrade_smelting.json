@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_smelting",
+        "data": 0
+    },
+    "pattern": [
+        "CFC",
+        "FUF",
+        "CFC"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "F": {
+            "item": "#FURNACE"
+        },
+        "C": {
+            "item": "#COAL_ANY"
+        }
+    }
+}

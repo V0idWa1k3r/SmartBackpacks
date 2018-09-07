@@ -1,0 +1,24 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:reinforced_leather",
+        "data": 0
+    },
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "#LEATHER"
+        },
+        {
+            "item": "#FLINT"
+        },
+        {
+            "item": "#NUGGET_IRON"
+        },
+        {
+            "item": "#NUGGET_IRON"
+        },
+        {
+            "item": "#NUGGET_IRON"
+        }
+    ]
+}

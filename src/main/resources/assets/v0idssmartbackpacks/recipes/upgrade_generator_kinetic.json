@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_generator_kinetic",
+        "data": 0
+    },
+    "pattern": [
+        "  T",
+        "TUS",
+        "SDT"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "S": {
+            "item": "#SLIMEBALL"
+        },
+        "D": {
+            "item": "#GEM_DIAMOND"
+        },
+        "T": {
+            "item": "#STICK"
+        }
+    }
+}

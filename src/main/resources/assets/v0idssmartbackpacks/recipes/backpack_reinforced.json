@@ -1,0 +1,27 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:backpack_reinforced",
+        "data": 0
+    },
+    "pattern": [
+        "LCL",
+        "IBI",
+        "LIL"
+    ],
+    "type": "v0idssmartbackpacks:backpack_upgrade",
+    "key": {
+        "L": {
+            "item": "#HARDENED_LEATHER"
+        },
+        "C": {
+            "item": "#CHEST"
+        },
+        "I": {
+            "item": "#INGOT_IRON"
+        },
+        "B": {
+            "item": "v0idssmartbackpacks:backpack",
+            "data": 0
+        }
+    }
+}

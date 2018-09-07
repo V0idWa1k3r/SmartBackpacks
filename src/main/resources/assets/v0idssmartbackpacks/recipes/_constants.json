@@ -1,0 +1,293 @@
+[
+    {
+        "ingredient": [
+            {
+                "type": "forge:ore_dict",
+                "ore": "leatherHardened"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "leatherReinforced"
+            }
+        ],
+        "name": "HARDENED_LEATHER"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetIron"
+        },
+        "name": "NUGGET_IRON"
+    },
+    {
+        "ingredient": [
+            {
+                "type": "forge:ore_dict",
+                "ore": "gemFlint"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "flint"
+            }
+        ],
+        "name": "FLINT"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "leather"
+        },
+        "name": "LEATHER"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "chestWood"
+        },
+        "name": "CHEST"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "wool"
+        },
+        "name": "WOOL"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "string"
+        },
+        "name": "STRING"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "ingotIron"
+        },
+        "name": "INGOT_IRON"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "ingotGold"
+        },
+        "name": "INGOT_GOLD"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "gemDiamond"
+        },
+        "name": "GEM_DIAMOND"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "rodBlaze"
+        },
+        "name": "ROD_BLAZE"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "dustBlaze"
+        },
+        "name": "DUST_BLAZE"
+    },
+    {
+        "ingredient": [
+            {
+                "type": "forge:ore_dict",
+                "ore": "dragonScales"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "dragonScale"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "scalesDragon"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "scaleDragon"
+            }
+        ],
+        "name": "DRAGON_SCALES"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "stone"
+        },
+        "name": "STONE"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        },
+        "name": "STICK"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "dyeRed"
+        },
+        "name": "DYE_RED"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "dyeGreen"
+        },
+        "name": "DYE_GREEN"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "dyeBlue"
+        },
+        "name": "DYE_BLUE"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "paper"
+        },
+        "name": "PAPER"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "book"
+        },
+        "name": "BOOK"
+    },
+    {
+        "ingredient": [
+            {
+                "type": "forge:ore_dict",
+                "ore": "workbenchWood"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "craftingTable"
+            }
+        ],
+        "name": "CRAFTING_TABLE"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "piston"
+        },
+        "name": "PISTON"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "enderpearl"
+        },
+        "name": "PEARL_ENDER"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "furnaceStone"
+        },
+        "name": "FURNACE"
+    },
+    {
+        "ingredient": [
+            {
+                "type": "forge:ore_dict",
+                "ore": "gemCoal"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "gemCharcoal"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "coal"
+            },
+            {
+                "type": "forge:ore_dict",
+                "ore": "charcoal"
+            }
+        ],
+        "name": "COAL_ANY"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "blockRedstone"
+        },
+        "name": "BLOCK_REDSTONE"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "blockIron"
+        },
+        "name": "BLOCK_IRON"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "blockDiamond"
+        },
+        "name": "BLOCK_DIAMOND"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "glowstone"
+        },
+        "name": "GLOWSTONE"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
+        },
+        "name": "DUST_REDSTONE"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "dustGlowstone"
+        },
+        "name": "DUST_GLOWSTONE"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "slimeball"
+        },
+        "name": "SLIMEBALL"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "ingotUranium"
+        },
+        "name": "URANIUM"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "obsidian"
+        },
+        "name": "OBSIDIAN"
+    },
+    {
+        "ingredient": {
+            "type": "forge:ore_dict",
+            "ore": "gemPrismarine"
+        },
+        "name": "GEM_PRISMARINE"
+    }
+]

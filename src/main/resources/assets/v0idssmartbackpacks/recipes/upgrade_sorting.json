@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_sorting",
+        "data": 0
+    },
+    "pattern": [
+        "PB ",
+        "BUB",
+        " BP"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "B": {
+            "item": "#BOOK"
+        },
+        "P": {
+            "item": "#PEARL_ENDER"
+        }
+    }
+}

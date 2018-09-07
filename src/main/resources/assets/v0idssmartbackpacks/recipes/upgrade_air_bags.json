@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_air_bags",
+        "data": 0
+    },
+    "pattern": [
+        "LGL",
+        "BUB",
+        "GBG"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "B": {
+            "item": "minecraft:bucket"
+        },
+        "G": {
+            "item": "minecraft:glass_bottle"
+        },
+        "L": {
+            "item": "#HARDENED_LEATHER"
+        }
+    }
+}

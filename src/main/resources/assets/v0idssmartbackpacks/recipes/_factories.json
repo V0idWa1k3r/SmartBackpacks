@@ -1,0 +1,6 @@
+{
+    "recipes": {
+        "backpack_dye": "v0id.vsb.recipe.FactoryDyeBackpack",
+        "backpack_upgrade": "v0id.vsb.recipe.FactoryUpgradeBackpack"
+    }
+}

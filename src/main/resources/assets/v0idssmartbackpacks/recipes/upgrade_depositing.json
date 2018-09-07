@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_depositing",
+        "data": 0
+    },
+    "pattern": [
+        " H ",
+        " U ",
+        " D "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "H": {
+            "item": "minecraft:hopper"
+        },
+        "D": {
+            "item": "minecraft:dispenser"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:backpack",
+        "data": 0
+    },
+    "pattern": [
+        "LCL",
+        "WLW",
+        "SWS"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "L": {
+            "item": "#LEATHER"
+        },
+        "C": {
+            "item": "#CHEST"
+        },
+        "W": {
+            "item": "#WOOL"
+        },
+        "S": {
+            "item": "#STRING"
+        }
+    }
+}

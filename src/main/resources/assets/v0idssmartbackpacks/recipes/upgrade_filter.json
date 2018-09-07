@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_filter",
+        "data": 0
+    },
+    "pattern": [
+        " P ",
+        "PUP",
+        " B "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "P": {
+            "item": "#PAPER"
+        },
+        "B": {
+            "item": "#BOOK"
+        }
+    }
+}

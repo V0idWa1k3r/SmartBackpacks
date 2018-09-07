@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_limiting",
+        "data": 0
+    },
+    "pattern": [
+        "OUO",
+        "LHL"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "L": {
+            "item": "minecraft:lava_bucket"
+        },
+        "H": {
+            "item": "minecraft:hopper"
+        },
+        "O": {
+            "item": "minecraft:observer"
+        }
+    }
+}

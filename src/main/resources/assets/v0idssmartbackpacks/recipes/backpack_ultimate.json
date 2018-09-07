@@ -1,0 +1,27 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:backpack_ultimate",
+        "data": 0
+    },
+    "pattern": [
+        "DSD",
+        "CBC",
+        "DSD"
+    ],
+    "type": "v0idssmartbackpacks:backpack_upgrade",
+    "key": {
+        "C": {
+            "item": "#CHEST"
+        },
+        "D": {
+            "item": "#DRAGON_SCALES"
+        },
+        "B": {
+            "item": "v0idssmartbackpacks:backpack_advanced",
+            "data": 0
+        },
+        "S": {
+            "item": "minecraft:shulker_shell"
+        }
+    }
+}

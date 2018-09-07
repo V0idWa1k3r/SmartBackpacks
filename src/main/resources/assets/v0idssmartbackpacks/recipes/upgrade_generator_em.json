@@ -1,0 +1,29 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_generator_em",
+        "data": 0
+    },
+    "pattern": [
+        "EGB",
+        "RUR",
+        "BGE"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "R": {
+            "item": "#DUST_REDSTONE"
+        },
+        "G": {
+            "item": "#DUST_GLOWSTONE"
+        },
+        "E": {
+            "item": "#PEARL_ENDER"
+        },
+        "B": {
+            "item": "#DUST_BLAZE"
+        }
+    }
+}

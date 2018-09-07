@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_water_spring",
+        "data": 0
+    },
+    "pattern": [
+        "WWW",
+        " U "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "W": {
+            "item": "minecraft:water_bucket"
+        }
+    }
+}

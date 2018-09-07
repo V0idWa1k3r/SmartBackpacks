@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_charging",
+        "data": 0
+    },
+    "pattern": [
+        "IRI",
+        "IUI",
+        "IRI"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "I": {
+            "item": "#INGOT_IRON"
+        },
+        "R": {
+            "item": "#BLOCK_REDSTONE"
+        }
+    }
+}

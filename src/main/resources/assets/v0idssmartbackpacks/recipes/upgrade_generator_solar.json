@@ -1,0 +1,30 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_generator_solar",
+        "data": 0
+    },
+    "pattern": [
+        "DDD",
+        "LUL",
+        "IWI"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "D": {
+            "item": "minecraft:daylight_detector"
+        },
+        "W": {
+            "item": "minecraft:water_bucket"
+        },
+        "L": {
+            "item": "minecraft:dye",
+            "data": 4
+        },
+        "I": {
+            "item": "#INGOT_IRON"
+        }
+    }
+}

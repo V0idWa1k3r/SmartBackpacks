@@ -1,0 +1,30 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:backpack_advanced",
+        "data": 0
+    },
+    "pattern": [
+        "LCL",
+        "DBD",
+        "LZL"
+    ],
+    "type": "v0idssmartbackpacks:backpack_upgrade",
+    "key": {
+        "L": {
+            "item": "#HARDENED_LEATHER"
+        },
+        "C": {
+            "item": "#CHEST"
+        },
+        "D": {
+            "item": "#GEM_DIAMOND"
+        },
+        "B": {
+            "item": "v0idssmartbackpacks:backpack_reinforced",
+            "data": 0
+        },
+        "Z": {
+            "item": "#ROD_BLAZE"
+        }
+    }
+}

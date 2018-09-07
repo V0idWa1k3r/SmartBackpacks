@@ -1,0 +1,33 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_mending",
+        "data": 0
+    },
+    "pattern": [
+        "B",
+        "U",
+        "A"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "A": {
+            "item": "minecraft:anvil",
+            "data": 0
+        },
+        "B": {
+            "item": "minecraft:enchanted_book",
+            "data": 0,
+            "tag": {
+                "ench": [
+                    {
+                        "id": 70,
+                        "lvl": 1
+                    }
+                ]
+            }
+        }
+    }
+}

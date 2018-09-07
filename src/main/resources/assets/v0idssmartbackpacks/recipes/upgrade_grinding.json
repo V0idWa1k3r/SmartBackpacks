@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_grinding",
+        "data": 0
+    },
+    "pattern": [
+        "IFI",
+        "FUF",
+        "IFI"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "F": {
+            "item": "#FLINT"
+        },
+        "I": {
+            "item": "#INGOT_IRON"
+        }
+    }
+}

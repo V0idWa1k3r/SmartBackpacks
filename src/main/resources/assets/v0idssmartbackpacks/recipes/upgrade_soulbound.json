@@ -1,0 +1,29 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_soulbound",
+        "data": 0
+    },
+    "pattern": [
+        "BSB",
+        "PUP",
+        "TPT"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "B": {
+            "item": "minecraft:dragon_breath"
+        },
+        "S": {
+            "item": "minecraft:nether_star"
+        },
+        "T": {
+            "item": "minecraft:ghast_tear"
+        },
+        "P": {
+            "item": "#GEM_PRISMARINE"
+        }
+    }
+}

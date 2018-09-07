@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_energy_ultimate",
+        "data": 0
+    },
+    "pattern": [
+        "GGG",
+        "UDU",
+        "GGG"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_energy_advanced"
+        },
+        "D": {
+            "item": "#BLOCK_DIAMOND"
+        },
+        "G": {
+            "item": "#GLOWSTONE"
+        }
+    }
+}

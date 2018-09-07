@@ -1,0 +1,29 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_ender_storage",
+        "data": 0
+    },
+    "pattern": [
+        "BWB",
+        "OUO",
+        "BEB"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "B": {
+            "item": "#ROD_BLAZE"
+        },
+        "W": {
+            "item": "#WOOL"
+        },
+        "O": {
+            "item": "#OBSIDIAN"
+        },
+        "E": {
+            "item": "#PEARL_ENDER"
+        }
+    }
+}

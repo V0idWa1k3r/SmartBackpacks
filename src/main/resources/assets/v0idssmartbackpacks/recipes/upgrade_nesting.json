@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_nesting",
+        "data": 0
+    },
+    "pattern": [
+        "LDL",
+        " U ",
+        "LDL"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "L": {
+            "item": "#HARDENED_LEATHER"
+        },
+        "D": {
+            "item": "#GEM_DIAMOND"
+        }
+    }
+}

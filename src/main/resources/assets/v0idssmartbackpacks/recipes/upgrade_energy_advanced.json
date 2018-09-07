@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_energy_advanced",
+        "data": 0
+    },
+    "pattern": [
+        "UIU"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_energy_basic"
+        },
+        "I": {
+            "item": "#BLOCK_IRON"
+        }
+    }
+}
