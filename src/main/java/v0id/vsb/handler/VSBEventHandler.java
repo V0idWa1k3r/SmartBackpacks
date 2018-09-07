@@ -19,6 +19,7 @@ import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -184,6 +185,11 @@ public class VSBEventHandler
     @SubscribeEvent
     public static void onItemPickup(EntityItemPickupEvent event)
     {
+        if (event.getResult() == Event.Result.ALLOW || event.isCanceled())
+        {
+            return;
+        }
+
         if (!event.getEntityPlayer().world.isRemote)
         {
             IVSBPlayer player = IVSBPlayer.of(event.getEntityPlayer());
@@ -192,7 +198,7 @@ public class VSBEventHandler
             {
                 if (pickupItem(event.getItem(), backpack.createWrapper(), event.getEntityPlayer()))
                 {
-                    event.setCanceled(true);
+                    event.setResult(Event.Result.ALLOW);
                     return;
                 }
             }
@@ -206,7 +212,7 @@ public class VSBEventHandler
                     {
                         if (pickupItem(event.getItem(), backpack.createWrapper(), event.getEntityPlayer()))
                         {
-                            event.setCanceled(true);
+                            event.setResult(Event.Result.ALLOW);
                             return;
                         }
                     }

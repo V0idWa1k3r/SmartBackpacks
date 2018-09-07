@@ -67,7 +67,7 @@ public class UpgradePulling extends UpgradeFiltered
             ItemStack inserted = ItemHandlerHelper.insertItemStacked(backpack.getInventory(), item.getItem(), true);
             if (inserted != item.getItem())
             {
-                ItemHandlerHelper.insertItemStacked(backpack.getInventory(), item.getItem(), false);
+                ItemHandlerHelper.insertItemStacked(backpack.getInventory(), item.getItem().copy(), false);
                 if (inserted.isEmpty())
                 {
                     item.setDead();
