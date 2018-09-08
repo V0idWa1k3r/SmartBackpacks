@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import v0id.api.vsb.data.VSBTextures;
+import v0id.vsb.config.VSBCfg;
 import v0id.vsb.container.ContainerUpgradeFiltered;
 
 public class GuiUpgradeFiltered extends GuiContainer
@@ -20,7 +21,7 @@ public class GuiUpgradeFiltered extends GuiContainer
     {
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
-        Minecraft.getMinecraft().renderEngine.bindTexture(VSBTextures.UPGRADE_FILTERED);
+        Minecraft.getMinecraft().renderEngine.bindTexture(VSBCfg.useLightUI ? VSBTextures.UPGRADE_FILTERED_LIGHT : VSBTextures.UPGRADE_FILTERED);
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
     }
 

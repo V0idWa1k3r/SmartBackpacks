@@ -13,6 +13,7 @@ import v0id.api.vsb.capability.IBackpack;
 import v0id.api.vsb.data.VSBItems;
 import v0id.api.vsb.data.VSBTextures;
 import v0id.api.vsb.item.IGUIOpenable;
+import v0id.vsb.config.VSBCfg;
 import v0id.vsb.container.ContainerBackpack;
 import v0id.vsb.net.VSBNet;
 import v0id.vsb.util.Lazy;
@@ -149,25 +150,25 @@ public class GuiBackpack extends GuiContainer
             {
                 case BASIC:
                 {
-                    backgroundTexture = VSBTextures.BACKPACK_BASIC;
+                    backgroundTexture = VSBCfg.useLightUI ? VSBTextures.BACKPACK_BASIC_LIGHT : VSBTextures.BACKPACK_BASIC;
                     break;
                 }
 
                 case REINFORCED:
                 {
-                    backgroundTexture = VSBTextures.BACKPACK_REINFORCED;
+                    backgroundTexture = VSBCfg.useLightUI ? VSBTextures.BACKPACK_REINFORCED_LIGHT : VSBTextures.BACKPACK_REINFORCED;
                     break;
                 }
 
                 case ADVANCED:
                 {
-                    backgroundTexture = VSBTextures.BACKPACK_ADVANCED;
+                    backgroundTexture = VSBCfg.useLightUI ? VSBTextures.BACKPACK_ADVANCED_LIGHT : VSBTextures.BACKPACK_ADVANCED;
                     break;
                 }
 
                 case ULTIMATE:
                 {
-                    backgroundTexture = VSBTextures.BACKPACK_ULTIMATE;
+                    backgroundTexture = VSBCfg.useLightUI ? VSBTextures.BACKPACK_ULTIMATE_LIGHT : VSBTextures.BACKPACK_ULTIMATE;
                     break;
                 }
             }
@@ -178,25 +179,25 @@ public class GuiBackpack extends GuiContainer
             {
                 case BASIC:
                 {
-                    backgroundTexture = VSBTextures.BACKPACK_BASIC_UPGRADES;
+                    backgroundTexture = VSBCfg.useLightUI ? VSBTextures.BACKPACK_BASIC_UPGRADES_LIGHT : VSBTextures.BACKPACK_BASIC_UPGRADES;
                     break;
                 }
 
                 case REINFORCED:
                 {
-                    backgroundTexture = VSBTextures.BACKPACK_REINFORCED_UPGRADES;
+                    backgroundTexture = VSBCfg.useLightUI ? VSBTextures.BACKPACK_REINFORCED_UPGRADES_LIGHT : VSBTextures.BACKPACK_REINFORCED_UPGRADES;
                     break;
                 }
 
                 case ADVANCED:
                 {
-                    backgroundTexture = VSBTextures.BACKPACK_ADVANCED_UPGRADES;
+                    backgroundTexture = VSBCfg.useLightUI ? VSBTextures.BACKPACK_ADVANCED_UPGRADES_LIGHT : VSBTextures.BACKPACK_ADVANCED_UPGRADES;
                     break;
                 }
 
                 case ULTIMATE:
                 {
-                    backgroundTexture = VSBTextures.BACKPACK_ULTIMATE_UPGRADES;
+                    backgroundTexture = VSBCfg.useLightUI ? VSBTextures.BACKPACK_ULTIMATE_UPGRADES_LIGHT : VSBTextures.BACKPACK_ULTIMATE_UPGRADES;
                     break;
                 }
             }
@@ -227,7 +228,7 @@ public class GuiBackpack extends GuiContainer
         {
             if (this.visible)
             {
-                mc.getTextureManager().bindTexture(VSBTextures.WIDGETS);
+                mc.getTextureManager().bindTexture(VSBCfg.useLightUI ? VSBTextures.WIDGETS_LIGHT : VSBTextures.WIDGETS);
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
                 int i = this.getHoverState(this.hovered);

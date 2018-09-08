@@ -50,6 +50,8 @@ public class VSBCfg
     @Config.RequiresMcRestart
     public static boolean dragonDropsScales = true;
 
+    public static boolean useLightUI = false;
+
     @Mod.EventBusSubscriber(modid = VSBRegistryNames.MODID)
     public static class ConfigHandler
     {

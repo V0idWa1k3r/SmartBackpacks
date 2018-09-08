@@ -5,6 +5,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import v0id.api.vsb.data.VSBTextures;
+import v0id.vsb.config.VSBCfg;
 import v0id.vsb.container.ContainerUpgradeEnderStorage;
 
 public class GuiUpgradeEnderStorage extends GuiContainer
@@ -21,7 +22,7 @@ public class GuiUpgradeEnderStorage extends GuiContainer
     {
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
-        Minecraft.getMinecraft().renderEngine.bindTexture(VSBTextures.UPGRADE_ENDER_STORAGE);
+        Minecraft.getMinecraft().renderEngine.bindTexture(VSBCfg.useLightUI ? VSBTextures.UPGRADE_ENDER_STORAGE_LIGHT : VSBTextures.UPGRADE_ENDER_STORAGE);
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
         for (int k = 0; k < 3; ++k)
         {

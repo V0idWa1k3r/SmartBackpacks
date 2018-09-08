@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.StringUtils;
 import v0id.api.vsb.capability.IFilter;
 import v0id.api.vsb.data.VSBTextures;
+import v0id.vsb.config.VSBCfg;
 import v0id.vsb.container.ContainerFilter;
 import v0id.vsb.net.VSBNet;
 
@@ -78,7 +79,7 @@ public class GuiFilter extends GuiContainer
     {
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
-        Minecraft.getMinecraft().renderEngine.bindTexture(VSBTextures.FILTER);
+        Minecraft.getMinecraft().renderEngine.bindTexture(VSBCfg.useLightUI ? VSBTextures.FILTER_LIGHT : VSBTextures.FILTER);
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
     }
 
