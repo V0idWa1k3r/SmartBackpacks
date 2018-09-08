@@ -42,7 +42,7 @@ item.v0idssmartbackpacks.dragon_scales.name=Ender Dragon Scales
 
 vsb.txt.backpack.desc.rf=%d/%d FE
 vsb.txt.upgrade.damage_bar.desc=Provides a durability bar to the backpack|Allows to see how full the backpack is at a glance|Sneak right-click to invert the display function
-vsb.txt.upgrade.nesting.desc=Allows nesting backpacks in a backpack with this upgrade|Nested backpacks will have full functionality|Nested backpacks can be opened by right clicking them
+vsb.txt.upgrade.nesting.desc=Allows nesting backpacks in a backpack with this upgrade|Nested backpacks will have full functionality|Nested backpacks can be opened by right clicking them|Only backpacks of a lower tier can be nested
 vsb.txt.upgrade.filter.desc=Allows filtering items for some upgrades|Has buttons for advanced filtering options|Filters can be nested
 vsb.txt.upgrade.pulling.desc=Will auto-collect items from the ground into the backpack|Can be filtered
 vsb.txt.upgrade.compressor.desc=Will try to compress items inside of the backpack|Will try a 3x3 recipe first, then a 2x2|Can be filtered
@@ -80,3 +80,7 @@ vsb.filter.state.1.false=Metadata respected
 vsb.filter.state.1.true=Metadata ignored
 vsb.filter.state.3.false=Blacklist Mode
 vsb.filter.state.3.true=Whitelist Mode
+
+vsb.kb.openBackpack=Open Backpack
+vsb.kb.removeBackpack=Wear/Remove Backpack
+vsb.kb.changeHotbar=Swap Hotbar
