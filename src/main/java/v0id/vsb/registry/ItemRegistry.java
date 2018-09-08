@@ -61,6 +61,7 @@ public class ItemRegistry
         event.getRegistry().register(new UpgradeMending());
         event.getRegistry().register(new UpgradeLimiting());
         event.getRegistry().register(new UpgradeDepositing());
+        event.getRegistry().register(new UpgradeHotbarSwapper());
 
         if (Loader.isModLoaded("harvestcraft"))
         {

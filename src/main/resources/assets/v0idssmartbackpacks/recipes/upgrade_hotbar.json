@@ -1,0 +1,26 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_hotbar",
+        "data": 0
+    },
+    "pattern": [
+        "DOH",
+        " U ",
+        "HOD"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "O": {
+            "item": "minecraft:observer"
+        },
+        "H": {
+            "item": "minecraft:hopper"
+        },
+        "D": {
+            "item": "minecraft:dropper"
+        }
+    }
+}

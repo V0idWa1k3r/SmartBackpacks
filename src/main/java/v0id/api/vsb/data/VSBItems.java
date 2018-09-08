@@ -111,6 +111,9 @@ public class VSBItems
     @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeDepositing)
     public static final Item UPGRADE_DEPOSITING = null;
 
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeHotbarSwapping)
+    public static final Item UPGRADE_HOTBAR = null;
+
     @GameRegistry.ObjectHolder(VSBRegistryNames.itemReinforcedLeather)
     public static final Item REINFORCED_LEATHER = null;
 

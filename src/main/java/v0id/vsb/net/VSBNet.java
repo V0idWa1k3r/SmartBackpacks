@@ -23,6 +23,7 @@ public class VSBNet
         WRAPPER.registerMessage(OpenWornBackpack.Handler.class, OpenWornBackpack.class, 4, Side.SERVER);
         WRAPPER.registerMessage(ChangeFilterParam.Handler.class, ChangeFilterParam.class, 5, Side.SERVER);
         WRAPPER.registerMessage(OpenContainer.Handler.class, OpenContainer.class, 6, Side.SERVER);
+        WRAPPER.registerMessage(ScrollHotbar.Handler.class, ScrollHotbar.class, 7, Side.SERVER);
     }
 
     public static void sendOpenGUI(EntityPlayer player, int slotID, boolean openFromInventory, int slot, EnumGuiType guiType)
@@ -58,5 +59,10 @@ public class VSBNet
     public static void sendOpenContainer(int slotIndex, int slotID)
     {
         WRAPPER.sendToServer(new OpenContainer(slotIndex, slotID));
+    }
+
+    public static void sendScrollHotbar(int slotIndex, int direction)
+    {
+        WRAPPER.sendToServer(new ScrollHotbar(slotIndex, direction));
     }
 }

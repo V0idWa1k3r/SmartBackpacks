@@ -36,6 +36,7 @@ item.v0idssmartbackpacks.upgrade_mending.name=Mending Upgrade
 item.v0idssmartbackpacks.upgrade_air_bags.name=Air Upgrade
 item.v0idssmartbackpacks.upgrade_limiting.name=Limiting Upgrade
 item.v0idssmartbackpacks.upgrade_depositing.name=Depositing Upgrade
+item.v0idssmartbackpacks.upgrade_hotbar.name=Hotbar Swapping Upgrade
 item.v0idssmartbackpacks.reinforced_leather.name=Hardened Leather
 item.v0idssmartbackpacks.dragon_scales.name=Ender Dragon Scales
 
@@ -71,6 +72,7 @@ vsb.txt.upgrade.mending.desc=Will use the experience of the holder to repair ite
 vsb.txt.upgrade.air_bags.desc=Will provide some air to breathe underwater
 vsb.txt.upgrade.limiting.desc=Similar to the Void upgrade will delete items|Will always leave 1 stack inside of the backpack|Must be filtered
 vsb.txt.upgrade.depositing.desc=Will deposit the contents of the backpack into a clicked inventory|Can be filtered
+vsb.txt.upgrade.hotbar.desc=Will swap the hotbar with the currently selected row inside of a backpack|A swap hotbar key must be pressed|Scrolling the mouse wheel will change the selected row|Alternatively a middle mouse button can be pressed to leave the row be|Only one hotbar swapping upgrade will work at once|Prioritizes the worn backpack|Can't be installed into ultimate backpacks
 
 vsb.filter.state.0.false=Ore Dictionary: Disabled
 vsb.filter.state.0.true=Ore Dictionary: Enabled

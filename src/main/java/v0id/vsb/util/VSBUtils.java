@@ -10,6 +10,12 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
+import v0id.api.vsb.capability.IBackpack;
+import v0id.api.vsb.capability.IVSBPlayer;
+import v0id.api.vsb.item.EnumBackpackType;
+import v0id.api.vsb.item.IUpgradeWrapper;
+import v0id.vsb.item.upgrade.UpgradeHotbarSwapper;
+import v0id.vsb.item.upgrade.UpgradeNesting;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
@@ -172,5 +178,91 @@ public class VSBUtils
         }
 
         return array;
+    }
+
+    public static ItemStack checkBackpackForHotbarUpgrade(ItemStack backpack)
+    {
+        if (!backpack.isEmpty())
+        {
+            IBackpack iBackpack = IBackpack.of(backpack);
+            if (iBackpack != null)
+            {
+                boolean hasNesting = false;
+                for (IUpgradeWrapper wrapper : iBackpack.createWrapper().getReadonlyUpdatesArray())
+                {
+                    if (wrapper != null)
+                    {
+                        if (wrapper.getUpgrade() instanceof UpgradeNesting)
+                        {
+                            hasNesting = true;
+                        }
+                        else
+                        {
+                            if (wrapper.getUpgrade() instanceof UpgradeHotbarSwapper)
+                            {
+                                return backpack;
+                            }
+                        }
+                    }
+                }
+
+                if (hasNesting)
+                {
+                    for (ItemStack is : iBackpack.createWrapper().getReadonlyInventory())
+                    {
+                        ItemStack test = checkBackpackForHotbarUpgrade(is);
+                        if (!test.isEmpty())
+                        {
+                            return test;
+                        }
+                    }
+                }
+            }
+        }
+
+        return ItemStack.EMPTY;
+    }
+
+    public static ItemStack getBackpack(EntityPlayer player, int slot)
+    {
+        if (slot == -1)
+        {
+            return IVSBPlayer.of(player).getCurrentBackpack();
+        }
+        else
+        {
+            return player.inventory.getStackInSlot(slot);
+        }
+    }
+
+    public static int getBackpackRows(EnumBackpackType backpackType)
+    {
+        switch (backpackType)
+        {
+            case BASIC:
+            {
+                return 2;
+            }
+
+            case REINFORCED:
+            {
+                return 4;
+            }
+
+            case ADVANCED:
+            {
+                return 6;
+            }
+
+            case ULTIMATE:
+            {
+                return 9;
+            }
+
+            default:
+            {
+                return backpackType.getInventorySize() / 9;
+            }
+        }
     }
 }

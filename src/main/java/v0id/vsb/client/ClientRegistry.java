@@ -30,13 +30,16 @@ public class ClientRegistry
 {
     public static KeyBinding key_openBackpack;
     public static KeyBinding key_removeBackpack;
+    public static KeyBinding key_changeHotbar;
 
     static void onPreInit()
     {
         key_openBackpack = new KeyBinding("vsb.kb.openBackpack", KeyConflictContext.UNIVERSAL, KeyModifier.NONE, Keyboard.KEY_B, "key.categories.inventory");
         key_removeBackpack = new KeyBinding("vsb.kb.removeBackpack", KeyConflictContext.UNIVERSAL, KeyModifier.SHIFT, Keyboard.KEY_B, "key.categories.inventory");
+        key_changeHotbar = new KeyBinding("vsb.kb.changeHotbar", KeyConflictContext.UNIVERSAL, KeyModifier.NONE, Keyboard.KEY_K, "key.categories.inventory");
         net.minecraftforge.fml.client.registry.ClientRegistry.registerKeyBinding(key_openBackpack);
         net.minecraftforge.fml.client.registry.ClientRegistry.registerKeyBinding(key_removeBackpack);
+        net.minecraftforge.fml.client.registry.ClientRegistry.registerKeyBinding(key_changeHotbar);
     }
 
     static void onInit()
@@ -100,6 +103,7 @@ public class ClientRegistry
         registerSimpleModel(VSBItems.UPGRADE_MENDING);
         registerSimpleModel(VSBItems.UPGRADE_LIMITING);
         registerSimpleModel(VSBItems.UPGRADE_DEPOSITING);
+        registerSimpleModel(VSBItems.UPGRADE_HOTBAR);
         registerSimpleModel(VSBItems.REINFORCED_LEATHER);
         registerSimpleModel(VSBItems.DRAGON_SCALES);
     }
