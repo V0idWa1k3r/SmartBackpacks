@@ -1,5 +1,6 @@
 package v0id.vsb.container;
 
+import invtweaks.api.container.ChestContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -10,6 +11,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.SlotItemHandler;
 import v0id.api.vsb.capability.IBackpack;
+import v0id.api.vsb.item.EnumBackpackType;
 import v0id.api.vsb.item.IUpgrade;
 import v0id.api.vsb.item.IUpgradeWrapper;
 import v0id.vsb.item.upgrade.UpgradeNesting;
@@ -119,8 +121,10 @@ public abstract class ContainerBackpack extends Container
         return itemstack;
     }
 
+    @ChestContainer
     public static class ContainerBackpackInventory extends ContainerBackpack
     {
+        private final EnumBackpackType backpackType;
         public ContainerBackpackInventory(ItemStack backpack, InventoryPlayer inventoryPlayer, int slotIndex, int slotID)
         {
             super(backpack, slotIndex, slotID, inventoryPlayer.player.openContainer instanceof ContainerBackpackUpgrades ? ((ContainerBackpackUpgrades) inventoryPlayer.player.openContainer).parentContainer : inventoryPlayer.player.openContainer, null);
@@ -130,6 +134,7 @@ public abstract class ContainerBackpack extends Container
             int slotsPerRow = 9;
             int rows = 2;
             IBackpack iBackpack = IBackpack.of(backpack);
+            this.backpackType = iBackpack.createWrapper().getBackpackType();
             switch (iBackpack.createWrapper().getBackpackType())
             {
                 case BASIC:
@@ -171,6 +176,18 @@ public abstract class ContainerBackpack extends Container
             }
 
             this.addPlayerInventory(inventoryPlayer, offsetX, offsetY);
+        }
+
+        @ChestContainer.RowSizeCallback
+        public int rowSizeCallback()
+        {
+            return this.backpackType == EnumBackpackType.ULTIMATE ? 13 : 9;
+        }
+
+        @ChestContainer.IsLargeCallback
+        public boolean isLargeCallback()
+        {
+            return this.backpackType.ordinal() > 1;
         }
 
         private class SlotItemHandlerBackpack extends SlotItemHandler
