@@ -35,7 +35,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class UpgradeEnderStorage extends UpgradeFiltered
 {
@@ -447,7 +446,7 @@ public class UpgradeEnderStorage extends UpgradeFiltered
     @Override
     public boolean canInstall(IBackpackWrapper backpack, IUpgradeWrapper self)
     {
-        return Loader.isModLoaded("enderstorage") && !Arrays.stream(backpack.getReadonlyUpdatesArray()).filter(Objects::nonNull).map(IUpgradeWrapper::getSelf).anyMatch(i -> i.getItem() == self.getSelf().getItem());
+        return Loader.isModLoaded("enderstorage") || Loader.isModLoaded("multistorage");
     }
 
     @Override
