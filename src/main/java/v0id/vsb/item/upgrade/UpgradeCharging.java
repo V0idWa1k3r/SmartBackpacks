@@ -47,11 +47,6 @@ public class UpgradeCharging extends ItemSimple implements IUpgrade
     @Override
     public void onTick(@Nullable IBackpackWrapper container, IBackpackWrapper backpack, IUpgradeWrapper self, Entity ticker)
     {
-    }
-
-    @Override
-    public void onPulse(@Nullable IBackpackWrapper container, IBackpackWrapper backpack, IUpgradeWrapper self, Entity pulsar)
-    {
         if (!self.getSelf().hasTagCompound())
         {
             self.getSelf().setTagCompound(new NBTTagCompound());
@@ -65,6 +60,7 @@ public class UpgradeCharging extends ItemSimple implements IUpgrade
 
         ItemStack is = backpack.getInventory().getStackInSlot(index);
         IEnergyStorage energyStorage = is.getCapability(CapabilityEnergy.ENERGY, null);
+        boolean sitchSlot = true;
         if (energyStorage != null)
         {
             int currentItem = energyStorage.getEnergyStored();
@@ -74,10 +70,19 @@ public class UpgradeCharging extends ItemSimple implements IUpgrade
             if (needed > 0)
             {
                 backpack.getSelfAsCapability().getEnergyStorage().extractEnergy(energyStorage.receiveEnergy(needed, false), false);
+                sitchSlot = energyStorage.getEnergyStored() >= energyStorage.getMaxEnergyStored();
             }
         }
 
-        this.setSlot(self.getSelf(), ++index);
+        if (sitchSlot)
+        {
+            this.setSlot(self.getSelf(), ++index);
+        }
+    }
+
+    @Override
+    public void onPulse(@Nullable IBackpackWrapper container, IBackpackWrapper backpack, IUpgradeWrapper self, Entity pulsar)
+    {
     }
 
     @Override
