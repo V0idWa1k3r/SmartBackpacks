@@ -52,11 +52,6 @@ public class UpgradeWaterSpring extends ItemSimple implements IUpgrade
     @Override
     public void onTick(@Nullable IBackpackWrapper container, IBackpackWrapper backpack, IUpgradeWrapper self, Entity ticker)
     {
-    }
-
-    @Override
-    public void onPulse(@Nullable IBackpackWrapper container, IBackpackWrapper backpack, IUpgradeWrapper self, Entity pulsar)
-    {
         if (!self.getSelf().hasTagCompound())
         {
             self.getSelf().setTagCompound(new NBTTagCompound());
@@ -103,6 +98,11 @@ public class UpgradeWaterSpring extends ItemSimple implements IUpgrade
         }
 
         this.setSlot(self.getSelf(), ++index);
+    }
+
+    @Override
+    public void onPulse(@Nullable IBackpackWrapper container, IBackpackWrapper backpack, IUpgradeWrapper self, Entity pulsar)
+    {
     }
 
     @Override
