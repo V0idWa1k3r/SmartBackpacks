@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_magnet",
+        "data": 0
+    },
+    "pattern": [
+        "IHI",
+        "HUH",
+        " I "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "I": {
+            "item": "#INGOT_IRON"
+        },
+        "H": {
+            "item": "minecraft:hopper"
+        }
+    }
+}

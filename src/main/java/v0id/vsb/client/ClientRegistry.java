@@ -104,6 +104,12 @@ public class ClientRegistry
         registerSimpleModel(VSBItems.UPGRADE_LIMITING);
         registerSimpleModel(VSBItems.UPGRADE_DEPOSITING);
         registerSimpleModel(VSBItems.UPGRADE_HOTBAR);
+        registerSimpleModel(VSBItems.UPGRADE_MAGNET);
+        registerSimpleModel(VSBItems.UPGRADE_QUIVER);
+        registerSimpleModel(VSBItems.UPGRADE_EXPERIENCE);
+        registerSimpleModel(VSBItems.UPGRADE_ENDER_CHEST);
+        registerSimpleModel(VSBItems.UPGRADE_SHARING);
+        registerSimpleModel(VSBItems.UPGRADE_LIGHTING);
         registerSimpleModel(VSBItems.REINFORCED_LEATHER);
         registerSimpleModel(VSBItems.DRAGON_SCALES);
     }

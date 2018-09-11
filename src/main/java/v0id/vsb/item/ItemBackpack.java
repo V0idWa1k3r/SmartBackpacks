@@ -27,12 +27,14 @@ import v0id.api.vsb.item.IGUIOpenable;
 import v0id.api.vsb.item.IUpgradeWrapper;
 import v0id.vsb.capability.Backpack;
 import v0id.vsb.container.ContainerBackpack;
+import v0id.vsb.item.upgrade.UpgradeEnderChest;
 import v0id.vsb.net.VSBNet;
 import v0id.vsb.util.EnumGuiType;
 import v0id.vsb.util.VSBUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemBackpack extends Item implements IGUIOpenable
@@ -93,9 +95,16 @@ public class ItemBackpack extends Item implements IGUIOpenable
         if (playerIn instanceof EntityPlayerMP)
         {
             ItemStack backpack = playerIn.getHeldItem(handIn);
-            int slot = handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : -1;
-            VSBUtils.openContainer((EntityPlayerMP) playerIn, new ContainerBackpack.ContainerBackpackInventory(backpack, playerIn.inventory, slot, handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : 40));
-            VSBNet.sendOpenGUI(playerIn, handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : 40, true, slot, EnumGuiType.BACKPACK);
+            if (!playerIn.isSneaking() && Arrays.stream(IBackpack.of(backpack).createWrapper().getReadonlyUpdatesArray()).anyMatch(u -> u != null && u.getUpgrade() instanceof UpgradeEnderChest))
+            {
+                playerIn.displayGUIChest(playerIn.getInventoryEnderChest());
+            }
+            else
+            {
+                int slot = handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : -1;
+                VSBUtils.openContainer((EntityPlayerMP) playerIn, new ContainerBackpack.ContainerBackpackInventory(backpack, playerIn.inventory, slot, handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : 40));
+                VSBNet.sendOpenGUI(playerIn, handIn == EnumHand.MAIN_HAND ? playerIn.inventory.currentItem : 40, true, slot, EnumGuiType.BACKPACK);
+            }
         }
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -207,7 +216,14 @@ public class ItemBackpack extends Item implements IGUIOpenable
     @Override
     public void openContainer(EntityPlayerMP player, ItemStack stack, int slot, int slotID)
     {
-        VSBUtils.openContainer(player, new ContainerBackpack.ContainerBackpackInventory(stack, player.inventory, slot, slotID));
-        VSBNet.sendOpenGUI(player, slotID, false, slot, EnumGuiType.BACKPACK_NESTED);
+        if (!player.isSneaking() && Arrays.stream(IBackpack.of(stack).createWrapper().getReadonlyUpdatesArray()).anyMatch(u -> u != null && u.getUpgrade() instanceof UpgradeEnderChest))
+        {
+            player.displayGUIChest(player.getInventoryEnderChest());
+        }
+        else
+        {
+            VSBUtils.openContainer(player, new ContainerBackpack.ContainerBackpackInventory(stack, player.inventory, slot, slotID));
+            VSBNet.sendOpenGUI(player, slotID, false, slot, EnumGuiType.BACKPACK_NESTED);
+        }
     }
 }

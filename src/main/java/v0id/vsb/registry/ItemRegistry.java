@@ -62,6 +62,12 @@ public class ItemRegistry
         event.getRegistry().register(new UpgradeLimiting());
         event.getRegistry().register(new UpgradeDepositing());
         event.getRegistry().register(new UpgradeHotbarSwapper());
+        event.getRegistry().register(new UpgradeMagnet());
+        event.getRegistry().register(new UpgradeQuiver());
+        event.getRegistry().register(new UpgradeExperience());
+        event.getRegistry().register(new UpgradeEnderChest());
+        event.getRegistry().register(new UpgradeSharing());
+        event.getRegistry().register(new UpgradeLighting());
 
         if (Loader.isModLoaded("harvestcraft"))
         {
@@ -83,6 +89,10 @@ public class ItemRegistry
         VSBUtils.registerOreSafe("dustGlowstone", new ItemStack(Items.GLOWSTONE_DUST));
         VSBUtils.registerOreSafe("dustBlaze", new ItemStack(Items.BLAZE_POWDER));
         VSBUtils.registerOreSafe("gemPrismarine", new ItemStack(Items.PRISMARINE_CRYSTALS));
+        VSBUtils.registerOreSafe("arrow", new ItemStack(Items.ARROW));
+        VSBUtils.registerOreSafe("arrow", new ItemStack(Items.SPECTRAL_ARROW));
+        VSBUtils.registerOreSafe("arrow", new ItemStack(Items.TIPPED_ARROW));
+        VSBUtils.registerOreSafe("torch", new ItemStack(Blocks.TORCH));
         for (int i = 0; i < 16; ++i)
         {
             VSBUtils.registerOreSafe("wool", new ItemStack(Blocks.WOOL, 1, i));

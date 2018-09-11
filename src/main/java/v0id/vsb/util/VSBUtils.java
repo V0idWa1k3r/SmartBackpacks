@@ -30,6 +30,55 @@ import java.util.stream.Stream;
 
 public class VSBUtils
 {
+    public static int getPlayerXP(EntityPlayer player)
+    {
+        return (int) (getExperienceForLevel(player.experienceLevel) + (player.experience * player.xpBarCap()));
+    }
+
+    public static void addXP(EntityPlayer player, int amt)
+    {
+        int experience = Math.max(0, getPlayerXP(player) + amt);
+        player.experienceTotal = experience;
+        player.experienceLevel = getLevelForExperience(experience);
+        int expForLevel = getExperienceForLevel(player.experienceLevel);
+        player.experience = (experience - expForLevel) / (float) player.xpBarCap();
+    }
+
+    public static int getLevelForExperience(int experience)
+    {
+        int i = 0;
+        while (getExperienceForLevel(i) <= experience)
+        {
+            i++;
+        }
+
+        return i - 1;
+    }
+
+    public static int getExperienceForLevel(int level)
+    {
+        if (level == 0)
+        {
+            return 0;
+        }
+
+        if (level > 0 && level < 16)
+        {
+            return (int) (Math.pow(level, 2)+ 6 * level);
+        }
+        else
+        {
+            if (level > 15 && level < 32)
+            {
+                return (int) (2.5 * Math.pow(level, 2) - 40.5 * level + 360);
+            }
+            else
+            {
+                return (int) (4.5 * Math.pow(level, 2) - 162.5 * level + 2220);
+            }
+        }
+    }
+
     public static void registerOreSafe(String ore, ItemStack item)
     {
         NonNullList<ItemStack> itemsList = OreDictionary.getOres(ore, false);

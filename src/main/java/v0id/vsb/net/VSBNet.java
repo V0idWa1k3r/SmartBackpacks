@@ -12,10 +12,11 @@ import v0id.vsb.util.EnumGuiType;
 
 public class VSBNet
 {
-    private static final SimpleNetworkWrapper WRAPPER = NetworkRegistry.INSTANCE.newSimpleChannel(VSBRegistryNames.MODID);
+    private static SimpleNetworkWrapper WRAPPER;
 
-    static
+    public static void register()
     {
+        WRAPPER = NetworkRegistry.INSTANCE.newSimpleChannel(VSBRegistryNames.MODID);
         WRAPPER.registerMessage(OpenGUI.Handler.class, OpenGUI.class, 0, Side.CLIENT);
         WRAPPER.registerMessage(SwitchContextContainer.Handler.class, SwitchContextContainer.class, 1, Side.SERVER);
         WRAPPER.registerMessage(SyncPlayerData.Handler.class, SyncPlayerData.class, 2, Side.CLIENT);
@@ -24,6 +25,9 @@ public class VSBNet
         WRAPPER.registerMessage(ChangeFilterParam.Handler.class, ChangeFilterParam.class, 5, Side.SERVER);
         WRAPPER.registerMessage(OpenContainer.Handler.class, OpenContainer.class, 6, Side.SERVER);
         WRAPPER.registerMessage(ScrollHotbar.Handler.class, ScrollHotbar.class, 7, Side.SERVER);
+        WRAPPER.registerMessage(PressExperienceButton.Handler.class, PressExperienceButton.class, 8, Side.SERVER);
+        WRAPPER.registerMessage(SyncExperienceToGUI.Handler.class, SyncExperienceToGUI.class, 9, Side.CLIENT);
+        WRAPPER.registerMessage(OpenWornBackpackOther.Handler.class, OpenWornBackpackOther.class, 10, Side.CLIENT);
     }
 
     public static void sendOpenGUI(EntityPlayer player, int slotID, boolean openFromInventory, int slot, EnumGuiType guiType)
@@ -64,5 +68,20 @@ public class VSBNet
     public static void sendScrollHotbar(int slotIndex, int direction)
     {
         WRAPPER.sendToServer(new ScrollHotbar(slotIndex, direction));
+    }
+
+    public static void sendSyncGUIExperience(EntityPlayerMP to, int exp)
+    {
+        WRAPPER.sendTo(new SyncExperienceToGUI(exp), to);
+    }
+
+    public static void sendPressExperienceButton(int id)
+    {
+        WRAPPER.sendToServer(new PressExperienceButton(id));
+    }
+
+    public static void sendOpenWornBackpackOther(EntityPlayerMP to, EntityPlayerMP other)
+    {
+        WRAPPER.sendTo(new OpenWornBackpackOther(other.getEntityId(), to.currentWindowId), to);
     }
 }

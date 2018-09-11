@@ -9,6 +9,8 @@ public interface IProxy extends ILifecycleListener
 {
     void openModGui(ItemStack stack, EnumGuiType guiType, int backpackSlot);
 
+    void setGuiExperience(int exp);
+
     IThreadListener getClientListener();
 
     EntityPlayer getClientPlayer();

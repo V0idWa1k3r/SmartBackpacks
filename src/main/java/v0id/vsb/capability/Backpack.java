@@ -2,10 +2,7 @@ package v0id.vsb.capability;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
@@ -171,23 +168,8 @@ public class Backpack implements IBackpack
     public NBTTagCompound serializeSync()
     {
         NBTTagCompound tag = new NBTTagCompound();
-        NBTTagList upgradesTag = new NBTTagList();
-        for (IUpgradeWrapper upgradeWrapper : this.wrapper.getReadonlyUpdatesArray())
-        {
-            if (upgradeWrapper != null)
-            {
-                IUpgrade upgrade = upgradeWrapper.getUpgrade();
-                if (upgrade.hasSyncTag())
-                {
-                    NBTTagCompound upTag = upgrade.getSyncTag();
-                    upTag.setString("name", upgrade.getSyncTagName());
-                    upgradesTag.appendTag(upTag);
-                }
-            }
-        }
-
         tag.setInteger("color", this.color);
-        tag.setTag("upgradesTag", upgradesTag);
+        tag.setTag("upgrades", this.upgrades.serializeNBT());
         tag.setInteger("energyMax", this.maxEnergy);
         tag.setInteger("energy", this.energyStorage.getEnergyStored());
         return tag;
@@ -197,15 +179,7 @@ public class Backpack implements IBackpack
     public void deserializeSync(NBTTagCompound tag)
     {
         this.color = tag.getInteger("color");
-        NBTTagList up = tag.getTagList("upgradesTag", Constants.NBT.TAG_COMPOUND);
-        for (NBTBase upgradeTag : up)
-        {
-            NBTTagCompound upgradeCompound = (NBTTagCompound) upgradeTag;
-            String name = upgradeCompound.getString("name");
-            upgradeCompound.removeTag("name");
-            this.upgradesClientTag.setTag(name, upgradeCompound);
-        }
-
+        this.upgrades.deserializeNBT(tag.getCompoundTag("upgrades"));
         this.maxEnergy = tag.getInteger("energyMax");
         this.energyStorage.extractEnergy(Integer.MAX_VALUE, false);
         this.energyStorage.receiveEnergy(tag.getInteger("energy"), false);

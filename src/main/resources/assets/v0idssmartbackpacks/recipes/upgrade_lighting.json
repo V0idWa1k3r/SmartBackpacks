@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_lighting",
+        "data": 0
+    },
+    "pattern": [
+        " T ",
+        "TUT",
+        "DTD"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "T": {
+            "item": "#TORCH"
+        },
+        "D": {
+            "item": "minecraft:dispenser"
+        }
+    }
+}

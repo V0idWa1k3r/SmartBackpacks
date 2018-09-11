@@ -14,6 +14,11 @@ public class ServerProxy implements IProxy
     }
 
     @Override
+    public void setGuiExperience(int exp)
+    {
+    }
+
+    @Override
     public IThreadListener getClientListener()
     {
         return null;

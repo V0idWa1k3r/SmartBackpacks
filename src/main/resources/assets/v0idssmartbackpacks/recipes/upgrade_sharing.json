@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_sharing",
+        "data": 0
+    },
+    "pattern": [
+        " W ",
+        "PUP",
+        " W "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "P": {
+            "item": "#PLANKS"
+        },
+        "W": {
+            "item": "#LOG"
+        }
+    }
+}

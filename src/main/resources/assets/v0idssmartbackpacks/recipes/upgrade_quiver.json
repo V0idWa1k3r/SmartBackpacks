@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_quiver",
+        "data": 0
+    },
+    "pattern": [
+        "LAL",
+        "LUL",
+        " L "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "L": {
+            "item": "#HARDENED_LEATHER"
+        },
+        "A": {
+            "item": "minecraft:arrow"
+        }
+    }
+}

@@ -5,83 +5,49 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
+import v0id.api.vsb.capability.IFilter;
 import v0id.api.vsb.data.VSBRegistryNames;
 import v0id.api.vsb.item.IBackpackWrapper;
-import v0id.api.vsb.item.IUpgrade;
 import v0id.api.vsb.item.IUpgradeWrapper;
-import v0id.vsb.item.ItemSimple;
-import v0id.vsb.util.VSBUtils;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class UpgradeMending extends ItemSimple implements IUpgrade
+public class UpgradeMagnet extends UpgradeFiltered
 {
-    public UpgradeMending()
+    public UpgradeMagnet()
     {
-        super(VSBRegistryNames.itemUpgradeMending, 1);
-    }
-
-    private int getSlot(ItemStack is)
-    {
-        return is.getTagCompound().getInteger("index");
-    }
-
-    private void setSlot(ItemStack is, int i)
-    {
-        is.getTagCompound().setInteger("index", i);
+        super(VSBRegistryNames.itemUpgradeMagnet);
     }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.addAll(Arrays.asList(I18n.format("vsb.txt.upgrade.mending.desc").split("\\|")));
+        tooltip.addAll(Arrays.asList(I18n.format("vsb.txt.upgrade.magnet.desc").split("\\|")));
     }
 
     @Override
     public void onTick(@Nullable IBackpackWrapper container, IBackpackWrapper backpack, IUpgradeWrapper self, Entity ticker)
     {
-        if (ticker instanceof EntityPlayer)
-        {
-            if (!self.getSelf().hasTagCompound())
-            {
-                self.getSelf().setTagCompound(new NBTTagCompound());
-            }
-
-            int index = this.getSlot(self.getSelf());
-            if (index >= backpack.getInventory().getSlots())
-            {
-                index = 0;
-            }
-
-            ItemStack is = backpack.getInventory().getStackInSlot(index);
-            if (!is.isEmpty() && is.isItemDamaged() && Enchantments.MENDING.canApply(is))
-            {
-                int xp = VSBUtils.getPlayerXP((EntityPlayer) ticker);
-                if (xp >= 2)
-                {
-                    is.setItemDamage(is.getItemDamage() - 1);
-                    VSBUtils.addXP((EntityPlayer) ticker, -2);
-                    backpack.markInventoryDirty();
-                }
-            }
-            else
-            {
-                this.setSlot(self.getSelf(), ++index);
-            }
-        }
     }
 
     @Override
     public void onPulse(@Nullable IBackpackWrapper container, IBackpackWrapper backpack, IUpgradeWrapper self, Entity pulsar)
     {
+        if (!pulsar.isSneaking() && pulsar instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) pulsar;
+            IFilter filter = IFilter.of(self.getSelf().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).getStackInSlot(0));
+            List<EntityItem> items = pulsar.world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pulsar.posX - 12, pulsar.posY - 6, pulsar.posZ - 12, pulsar.posX + 12, pulsar.posY + 6, pulsar.posZ + 12), e -> filter == null || filter.accepts(e.getItem()));
+            items.forEach(e -> e.onCollideWithPlayer(player));
+        }
     }
 
     @Override

@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.storage.loot.LootEntry;
 import net.minecraft.world.storage.loot.LootEntryTable;
 import net.minecraft.world.storage.loot.LootPool;
@@ -21,6 +22,7 @@ import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -34,7 +36,10 @@ import v0id.api.vsb.item.IBackpackWrapper;
 import v0id.api.vsb.item.IUpgradeWrapper;
 import v0id.vsb.capability.Player;
 import v0id.vsb.config.VSBCfg;
+import v0id.vsb.container.ContainerBackpack;
+import v0id.vsb.item.upgrade.UpgradeSharing;
 import v0id.vsb.item.upgrade.UpgradeSoulbound;
+import v0id.vsb.net.VSBNet;
 import v0id.vsb.util.VSBUtils;
 
 import javax.annotation.Nonnull;
@@ -141,25 +146,6 @@ public class VSBEventHandler
     }
 
     @SubscribeEvent
-    public static void onStartTracking(PlayerEvent.StartTracking event)
-    {
-        if (event.getTarget() instanceof EntityPlayer)
-        {
-            IVSBPlayer.of((EntityPlayer) event.getTarget()).addListener(event.getEntityPlayer());
-            IVSBPlayer.of((EntityPlayer) event.getTarget()).syncTo(event.getEntityPlayer());
-        }
-    }
-
-    @SubscribeEvent
-    public static void onStopTracking(PlayerEvent.StopTracking event)
-    {
-        if (event.getTarget() instanceof EntityPlayer)
-        {
-            IVSBPlayer.of((EntityPlayer) event.getTarget()).removeListener(event.getEntityPlayer());
-        }
-    }
-
-    @SubscribeEvent
     public static void onTick(TickEvent.PlayerTickEvent event)
     {
         if (event.phase == TickEvent.Phase.END)
@@ -171,6 +157,28 @@ public class VSBEventHandler
                 {
                     player.sync();
                     player.setWasTicked();
+                }
+
+                Iterator<EntityPlayer> iter = player.getListeners().iterator();
+                while (iter.hasNext())
+                {
+                    EntityPlayer listener = iter.next();
+                    if (listener != event.player)
+                    {
+                        if (listener.getDistanceSq(event.player) > 4096)
+                        {
+                            iter.remove();
+                        }
+                    }
+                }
+
+                for (EntityPlayer entPlayer : event.player.world.playerEntities)
+                {
+                    if (!player.getListeners().contains(entPlayer) && entPlayer.getDistanceSq(event.player) < 4096)
+                    {
+                        player.getListeners().add(entPlayer);
+                        player.syncTo(entPlayer);
+                    }
                 }
 
                 if (!player.getCurrentBackpack().isEmpty())
@@ -309,6 +317,32 @@ public class VSBEventHandler
     public static void onDimensionsChanged(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent event)
     {
         IVSBPlayer.of(event.player).sync();
+    }
+
+    @SubscribeEvent
+    public static void onInteract(PlayerInteractEvent.EntityInteract event)
+    {
+        if (event.getTarget() instanceof EntityPlayerMP && event.getEntityPlayer() instanceof EntityPlayerMP)
+        {
+            EntityPlayerMP player = (EntityPlayerMP) event.getEntityPlayer();
+            EntityPlayerMP other = (EntityPlayerMP) event.getTarget();
+            IVSBPlayer ofOther = IVSBPlayer.of(other);
+            IBackpack backpack = IBackpack.of(ofOther.getCurrentBackpack());
+            if (backpack != null)
+            {
+                IUpgradeWrapper wrapper = Arrays.stream(backpack.createWrapper().getReadonlyUpdatesArray()).filter(u -> u != null && u.getUpgrade() instanceof UpgradeSharing).findAny().orElse(null);
+                if (wrapper != null)
+                {
+                    boolean strict = wrapper.getSelf().hasTagCompound() && wrapper.getSelf().getTagCompound().getBoolean("strict");
+                    if (!strict || other.getTeam() == null || player.getTeam().isSameTeam(other.getTeam()))
+                    {
+                        VSBUtils.openContainer(player, new ContainerBackpack.ContainerBackpackInventory(ofOther.getCurrentBackpack(), player.inventory, -2, -2));
+                        VSBNet.sendOpenWornBackpackOther(player, other);
+                        other.sendStatusMessage(new TextComponentTranslation("vsb.backpack_opened", player.getDisplayNameString()), true);
+                    }
+                }
+            }
+        }
     }
 
     private static boolean pickupItem(EntityItem item, IBackpackWrapper backpack, EntityPlayer player)

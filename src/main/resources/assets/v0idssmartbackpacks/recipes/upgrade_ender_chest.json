@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_ender_chest",
+        "data": 0
+    },
+    "pattern": [
+        "E",
+        "U"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "E": {
+            "item": "minecraft:ender_chest"
+        }
+    }
+}

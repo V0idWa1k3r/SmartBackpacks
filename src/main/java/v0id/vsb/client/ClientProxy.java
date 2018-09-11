@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityEnderChest;
 import net.minecraft.util.IThreadListener;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -74,9 +75,26 @@ public class ClientProxy implements IProxy
                 gui = new GuiUpgradeEnderStorage(stack, backpackSlot);
                 break;
             }
+
+            case ENDER_CHEST:
+            {
+                Minecraft.getMinecraft().player.getInventoryEnderChest().setChestTileEntity(new TileEntityEnderChest());
+                Minecraft.getMinecraft().player.displayGUIChest(Minecraft.getMinecraft().player.getInventoryEnderChest());
+                return;
+            }
         }
 
         Minecraft.getMinecraft().displayGuiScreen(gui);
+    }
+
+    @Override
+    public void setGuiExperience(int exp)
+    {
+        GuiScreen openGui = Minecraft.getMinecraft().currentScreen;
+        if (openGui instanceof GuiBackpack)
+        {
+            ((GuiBackpack) openGui).experienceLVL = exp;
+        }
     }
 
     @Override

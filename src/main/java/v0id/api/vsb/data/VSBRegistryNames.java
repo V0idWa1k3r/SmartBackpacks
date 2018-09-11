@@ -46,6 +46,12 @@ public class VSBRegistryNames
         itemUpgradeLimiting                                                                 = "upgrade_limiting",
         itemUpgradeDepositing                                                               = "upgrade_depositing",
         itemUpgradeHotbarSwapping                                                           = "upgrade_hotbar",
+        itemUpgradeMagnet                                                                   = "upgrade_magnet",
+        itemUpgradeQuiver                                                                   = "upgrade_quiver",
+        itemUpgradeExperience                                                               = "upgrade_experience",
+        itemUpgradeEnderChest                                                               = "upgrade_ender_chest",
+        itemUpgradeSharing                                                                  = "upgrade_sharing",
+        itemUpgradeLighting                                                                 = "upgrade_lighting",
         itemReinforcedLeather                                                               = "reinforced_leather",
         itemDragonScales                                                                    = "dragon_scales";
 

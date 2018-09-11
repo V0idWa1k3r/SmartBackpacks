@@ -114,6 +114,24 @@ public class VSBItems
     @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeHotbarSwapping)
     public static final Item UPGRADE_HOTBAR = null;
 
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeMagnet)
+    public static final Item UPGRADE_MAGNET = null;
+
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeQuiver)
+    public static final Item UPGRADE_QUIVER = null;
+
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeExperience)
+    public static final Item UPGRADE_EXPERIENCE = null;
+
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeEnderChest)
+    public static final Item UPGRADE_ENDER_CHEST = null;
+
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeSharing)
+    public static final Item UPGRADE_SHARING = null;
+
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeLighting)
+    public static final Item UPGRADE_LIGHTING = null;
+
     @GameRegistry.ObjectHolder(VSBRegistryNames.itemReinforcedLeather)
     public static final Item REINFORCED_LEATHER = null;
 

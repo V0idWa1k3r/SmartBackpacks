@@ -24,6 +24,7 @@ import v0id.vsb.capability.Backpack;
 import v0id.vsb.capability.Filter;
 import v0id.vsb.capability.Player;
 import v0id.vsb.handler.VSBEventHandler;
+import v0id.vsb.net.VSBNet;
 import v0id.vsb.util.IProxy;
 
 import javax.annotation.Nullable;
@@ -93,6 +94,7 @@ public class VSB
             }
         }, Filter::new);
 
+        VSBNet.register();
         listeners.add(proxy);
         listeners.forEach(l -> l.preInit(event));
         VSBEventHandler.tableScales = LootTableList.register(VSBRegistryNames.asLocation("inject_dragon_scales"));
@@ -115,11 +117,11 @@ public class VSB
     {
         if (event.isDirectory())
         {
-            modLogger.warn("Factory0-Resources fingerprint doesn't match but we are in a dev environment so that's okay.");
+            modLogger.warn("VSB fingerprint doesn't match but we are in a dev environment so that's okay.");
         }
         else
         {
-            modLogger.error("Factory0-Resources fingerprint doesn't match! Expected {}, got {}!", event.getExpectedFingerprint(), String.join(" , ", event.getFingerprints()));
+            modLogger.error("VSB fingerprint doesn't match! Expected {}, got {}!", event.getExpectedFingerprint(), String.join(" , ", event.getFingerprints()));
         }
     }
 }
