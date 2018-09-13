@@ -51,6 +51,7 @@ import java.util.Objects;
 @Mod.EventBusSubscriber(modid = VSBRegistryNames.MODID)
 public class VSBEventHandler
 {
+    public static boolean tmbCompatInitialized;
     @SubscribeEvent
     public static void onCapsAttach(AttachCapabilitiesEvent<Entity> event)
     {
@@ -269,7 +270,11 @@ public class VSBEventHandler
 
             if (!hasSoulbound)
             {
-                event.getDrops().add(new EntityItem(event.getEntityPlayer().world, event.getEntityPlayer().posX, event.getEntityPlayer().posY, event.getEntityPlayer().posZ, player.getCurrentBackpack().copy()));
+                if (!tmbCompatInitialized)
+                {
+                    event.getDrops().add(new EntityItem(event.getEntityPlayer().world, event.getEntityPlayer().posX, event.getEntityPlayer().posY, event.getEntityPlayer().posZ, player.getCurrentBackpack().copy()));
+                }
+
                 player.setCurrentBackpack(ItemStack.EMPTY);
             }
         }
