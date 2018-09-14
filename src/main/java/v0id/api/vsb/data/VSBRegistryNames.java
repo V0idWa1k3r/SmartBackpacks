@@ -52,6 +52,7 @@ public class VSBRegistryNames
         itemUpgradeEnderChest                                                               = "upgrade_ender_chest",
         itemUpgradeSharing                                                                  = "upgrade_sharing",
         itemUpgradeLighting                                                                 = "upgrade_lighting",
+        itemUpgradeCrafting                                                                 = "upgrade_crafting",
         itemReinforcedLeather                                                               = "reinforced_leather",
         itemDragonScales                                                                    = "dragon_scales";
 

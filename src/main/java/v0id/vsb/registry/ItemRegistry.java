@@ -68,6 +68,7 @@ public class ItemRegistry
         event.getRegistry().register(new UpgradeEnderChest());
         event.getRegistry().register(new UpgradeSharing());
         event.getRegistry().register(new UpgradeLighting());
+        event.getRegistry().register(new UpgradeCrafting());
 
         if (Loader.isModLoaded("harvestcraft"))
         {

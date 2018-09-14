@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "v0idssmartbackpacks:upgrade_crafting",
+        "data": 0
+    },
+    "pattern": [
+        " C ",
+        "CUC",
+        " C "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "U": {
+            "item": "v0idssmartbackpacks:upgrade_base"
+        },
+        "C": {
+            "item": "#CRAFTING_TABLE"
+        }
+    }
+}

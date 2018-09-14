@@ -132,6 +132,9 @@ public class VSBItems
     @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeLighting)
     public static final Item UPGRADE_LIGHTING = null;
 
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeCrafting)
+    public static final Item UPGRADE_CRAFTING = null;
+
     @GameRegistry.ObjectHolder(VSBRegistryNames.itemReinforcedLeather)
     public static final Item REINFORCED_LEATHER = null;
 

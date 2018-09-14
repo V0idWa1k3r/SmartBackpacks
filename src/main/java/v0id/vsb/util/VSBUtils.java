@@ -30,6 +30,17 @@ import java.util.stream.Stream;
 
 public class VSBUtils
 {
+    public static int[] createDefaultArray(int size, int defaultElement)
+    {
+        int[] ret = new int[size];
+        for (int i = 0; i < size; ++i)
+        {
+            ret[i] = defaultElement;
+        }
+
+        return ret;
+    }
+
     public static int getPlayerXP(EntityPlayer player)
     {
         return (int) (getExperienceForLevel(player.experienceLevel) + (player.experience * player.xpBarCap()));

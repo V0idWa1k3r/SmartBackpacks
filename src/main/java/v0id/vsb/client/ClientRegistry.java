@@ -110,6 +110,7 @@ public class ClientRegistry
         registerSimpleModel(VSBItems.UPGRADE_ENDER_CHEST);
         registerSimpleModel(VSBItems.UPGRADE_SHARING);
         registerSimpleModel(VSBItems.UPGRADE_LIGHTING);
+        registerSimpleModel(VSBItems.UPGRADE_CRAFTING);
         registerSimpleModel(VSBItems.REINFORCED_LEATHER);
         registerSimpleModel(VSBItems.DRAGON_SCALES);
     }

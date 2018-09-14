@@ -42,7 +42,8 @@ item.v0idssmartbackpacks.upgrade_quiver.name=Quiver Upgrade
 item.v0idssmartbackpacks.upgrade_experience.name=Experience Storage Upgrade
 item.v0idssmartbackpacks.upgrade_ender_chest.name=Ender Chest Upgrade
 item.v0idssmartbackpacks.upgrade_sharing.name=Sharing Upgrade
-item.v0idssmartbackpacks.upgrade_lighting.name=Lighting Upgrade
+item.v0idssmartbackpacks.upgrade_lighting.name=Lightg Upgrade
+item.v0idssmartbackpacks.upgrade_crafting.name=Crafting Upgrade
 item.v0idssmartbackpacks.reinforced_leather.name=Hardened Leather
 item.v0idssmartbackpacks.dragon_scales.name=Ender Dragon Scales
 
@@ -85,6 +86,7 @@ vsb.txt.upgrade.experience.desc=Allows you to store experience in the backpack|M
 vsb.txt.upgrade.ender_chest.desc=Opening the backpack opens your ender chest instead|Sneaking while opening the backpack will open the backpack instead|You must have opened your ender chest at least once previously!
 vsb.txt.upgrade.sharing.desc=Allows other players to open the backpack you are currently wearing|Sneak right click to put into strict mode|In strict mode only players on the same team are allowed access|Access to upgrades is prohibited to all but the owner
 vsb.txt.upgrade.lighting.desc=Will automatically place torches if light level <= 7|Will pull torches from the backpack
+vsb.txt.upgrade.crafting.desc=Will attempt to craft items according to pattern set|Buttons next to slots can be pressed to switch that slot to oredictionary mode|Multiple can be installed
 
 vsb.filter.state.0.false=Ore Dictionary: Disabled
 vsb.filter.state.0.true=Ore Dictionary: Enabled
@@ -100,6 +102,8 @@ vsb.txt.gui.backpack_button.4=Grab all stored XP
 vsb.txt.gui.backpack_button.5=Deposit 1 lvl worth of XP
 vsb.txt.gui.backpack_button.6=Deposit 10 lvl worth of XP
 vsb.txt.gui.backpack_button.7=Deposit all XP
+vsb.crafting.oredict.true=✓
+vsb.crafting.oredict.false=x
 
 vsb.backpack_opened=%s opened your backpack!
 

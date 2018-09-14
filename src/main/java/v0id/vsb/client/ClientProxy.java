@@ -9,10 +9,7 @@ import net.minecraft.util.IThreadListener;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import v0id.vsb.client.gui.GuiBackpack;
-import v0id.vsb.client.gui.GuiFilter;
-import v0id.vsb.client.gui.GuiUpgradeEnderStorage;
-import v0id.vsb.client.gui.GuiUpgradeFiltered;
+import v0id.vsb.client.gui.*;
 import v0id.vsb.container.ContainerBackpack;
 import v0id.vsb.util.EnumGuiType;
 import v0id.vsb.util.IProxy;
@@ -73,6 +70,12 @@ public class ClientProxy implements IProxy
             case UPGRADE_ENDER_STORAGE:
             {
                 gui = new GuiUpgradeEnderStorage(stack, backpackSlot);
+                break;
+            }
+
+            case UPGRADE_CRAFTING:
+            {
+                gui = new GuiUpgradeCrafting(stack, backpackSlot);
                 break;
             }
 

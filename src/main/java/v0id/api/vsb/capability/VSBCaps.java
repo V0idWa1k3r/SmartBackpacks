@@ -13,4 +13,7 @@ public class VSBCaps
 
     @CapabilityInject(IFilter.class)
     public static final Capability<IFilter> FILTER_CAPABILITY = null;
+
+    @CapabilityInject(ICraftingUpgrade.class)
+    public static final Capability<ICraftingUpgrade> CRAFTING_UPGRADE_CAPABILITY = null;
 }

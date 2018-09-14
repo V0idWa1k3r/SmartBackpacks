@@ -28,6 +28,7 @@ public class VSBNet
         WRAPPER.registerMessage(PressExperienceButton.Handler.class, PressExperienceButton.class, 8, Side.SERVER);
         WRAPPER.registerMessage(SyncExperienceToGUI.Handler.class, SyncExperienceToGUI.class, 9, Side.CLIENT);
         WRAPPER.registerMessage(OpenWornBackpackOther.Handler.class, OpenWornBackpackOther.class, 10, Side.CLIENT);
+        WRAPPER.registerMessage(ChangeOreDictParam.Handler.class, ChangeOreDictParam.class, 11, Side.SERVER);
     }
 
     public static void sendOpenGUI(EntityPlayer player, int slotID, boolean openFromInventory, int slot, EnumGuiType guiType)
@@ -83,5 +84,10 @@ public class VSBNet
     public static void sendOpenWornBackpackOther(EntityPlayerMP to, EntityPlayerMP other)
     {
         WRAPPER.sendTo(new OpenWornBackpackOther(other.getEntityId(), to.currentWindowId), to);
+    }
+
+    public static void sendChangeOreDictParam(int id)
+    {
+        WRAPPER.sendToServer(new ChangeOreDictParam((byte) id));
     }
 }

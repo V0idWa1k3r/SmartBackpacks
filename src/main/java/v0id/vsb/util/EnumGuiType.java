@@ -10,5 +10,6 @@ public enum EnumGuiType
     UPGRADE,
     FILTER,
     UPGRADE_ENDER_STORAGE,
-    ENDER_CHEST
+    ENDER_CHEST,
+    UPGRADE_CRAFTING
 }

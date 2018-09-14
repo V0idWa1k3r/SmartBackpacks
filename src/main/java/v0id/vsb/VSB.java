@@ -18,11 +18,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import v0id.api.vsb.capability.IBackpack;
+import v0id.api.vsb.capability.ICraftingUpgrade;
 import v0id.api.vsb.capability.IFilter;
 import v0id.api.vsb.capability.IVSBPlayer;
 import v0id.api.vsb.data.VSBRegistryNames;
 import v0id.api.vsb.util.ILifecycleListener;
 import v0id.vsb.capability.Backpack;
+import v0id.vsb.capability.CraftingUpgrade;
 import v0id.vsb.capability.Filter;
 import v0id.vsb.capability.Player;
 import v0id.vsb.handler.VSBEventHandler;
@@ -96,6 +98,22 @@ public class VSB
                 instance.deserializeNBT((NBTTagCompound) nbt);
             }
         }, Filter::new);
+
+        CapabilityManager.INSTANCE.register(ICraftingUpgrade.class, new Capability.IStorage<ICraftingUpgrade>()
+        {
+            @Nullable
+            @Override
+            public NBTBase writeNBT(Capability<ICraftingUpgrade> capability, ICraftingUpgrade instance, EnumFacing side)
+            {
+                return instance.serializeNBT();
+            }
+
+            @Override
+            public void readNBT(Capability<ICraftingUpgrade> capability, ICraftingUpgrade instance, EnumFacing side, NBTBase nbt)
+            {
+                instance.deserializeNBT((NBTTagCompound) nbt);
+            }
+        }, CraftingUpgrade::new);
 
         VSBNet.register();
         listeners.add(proxy);
