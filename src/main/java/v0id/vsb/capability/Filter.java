@@ -9,7 +9,7 @@ import v0id.vsb.util.VSBUtils;
 
 public class Filter implements IFilter
 {
-    private final ItemStackHandler inventory = new ItemStackHandler(9);
+    private final ItemStackHandler inventory = new ItemStackHandler(18);
     private boolean oreDict;
     private boolean ignoreMeta;
     private boolean ignoreNBT;
@@ -128,9 +128,23 @@ public class Filter implements IFilter
     public void deserializeNBT(NBTTagCompound nbt)
     {
         this.inventory.deserializeNBT(nbt.getCompoundTag("inventory"));
+        this.checkV2();
         this.oreDict = nbt.getBoolean("ore");
         this.ignoreMeta = nbt.getBoolean("meta");
         this.ignoreNBT = nbt.getBoolean("nbt");
         this.isWhitelist = nbt.getBoolean("whitelist");
+    }
+
+    private void checkV2()
+    {
+        if (this.inventory.getSlots() == 9)
+        {
+            ItemStack[] stacks = VSBUtils.capabilityToArray(this.inventory, ItemStack.class, s -> s);
+            this.inventory.setSize(18);
+            for (int i = 0; i < stacks.length; ++i)
+            {
+                this.inventory.setStackInSlot(i, stacks[i]);
+            }
+        }
     }
 }

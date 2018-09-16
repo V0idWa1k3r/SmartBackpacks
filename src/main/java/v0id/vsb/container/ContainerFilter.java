@@ -21,12 +21,12 @@ public class ContainerFilter extends Container
         this.filter = filter;
         this.filterSlot = filterSlot;
         IFilter filter1 = IFilter.of(filter);
-        for (int i = 0; i < 9; ++i)
+        for (int i = 0; i < 18; ++i)
         {
-            this.addSlotToContainer(new SlotFilter(filter1.getItems(), i, 8 + i * 18, 8));
+            this.addSlotToContainer(new SlotFilter(filter1.getItems(), i, 8 + (i % 9) * 18, 8 + i / 9 * 18));
         }
 
-        this.addPlayerInventory(inventoryPlayer, 8, 58);
+        this.addPlayerInventory(inventoryPlayer, 8, 76);
     }
 
     @Override
@@ -81,6 +81,11 @@ public class ContainerFilter extends Container
         @Override
         public boolean isItemValid(@Nonnull ItemStack stack)
         {
+            if (IFilter.of(stack) != null)
+            {
+                return super.isItemValid(stack);
+            }
+
             this.putStack(stack.copy());
             return false;
         }
@@ -88,6 +93,11 @@ public class ContainerFilter extends Container
         @Override
         public boolean canTakeStack(EntityPlayer playerIn)
         {
+            if (IFilter.of(this.getStack()) != null)
+            {
+                return super.canTakeStack(playerIn);
+            }
+
             this.putStack(ItemStack.EMPTY);
             return false;
         }
