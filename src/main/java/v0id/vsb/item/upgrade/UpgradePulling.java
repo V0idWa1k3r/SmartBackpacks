@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
+import v0id.api.vsb.capability.IBackpack;
 import v0id.api.vsb.capability.IFilter;
 import v0id.api.vsb.data.VSBRegistryNames;
 import v0id.api.vsb.item.IBackpackWrapper;
@@ -62,7 +63,7 @@ public class UpgradePulling extends UpgradeFiltered
             }
         }
 
-        if (canAccept)
+        if (canAccept && IBackpack.of(item.getItem()) == null)
         {
             ItemStack inserted = ItemHandlerHelper.insertItemStacked(backpack.getInventory(), item.getItem(), true);
             if (inserted != item.getItem())
