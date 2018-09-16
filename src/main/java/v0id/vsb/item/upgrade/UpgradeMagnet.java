@@ -58,7 +58,7 @@ public class UpgradeMagnet extends UpgradeFiltered
             }
 
             IFilter filter = IFilter.of(self.getSelf().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).getStackInSlot(0));
-            List<EntityItem> items = pulsar.world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pulsar.posX - 12, pulsar.posY - 6, pulsar.posZ - 12, pulsar.posX + 12, pulsar.posY + 6, pulsar.posZ + 12), e -> (filter == null || filter.accepts(e.getItem())) && !this.hasSolegnoliaAround(e));
+            List<EntityItem> items = pulsar.world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pulsar.posX - 12, pulsar.posY - 6, pulsar.posZ - 12, pulsar.posX + 12, pulsar.posY + 6, pulsar.posZ + 12), e -> e != null && !e.isDead && (filter == null || filter.accepts(e.getItem())) && !this.hasSolegnoliaAround(e));
             items.forEach(e -> e.onCollideWithPlayer(player));
         }
     }
