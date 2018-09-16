@@ -21,7 +21,7 @@ public class GuiFilter extends GuiContainer
     {
         super(new ContainerFilter(Minecraft.getMinecraft().player.inventory, filter, slotIndex));
         this.xSize = 176;
-        this.ySize = 140;
+        this.ySize = 158;
     }
 
     @Override
@@ -30,10 +30,10 @@ public class GuiFilter extends GuiContainer
         super.initGui();
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
-        this.addButton(new FilterButton(0, i + 21, j + 30, 20, 20, StringUtils.EMPTY));
-        this.addButton(new FilterButton(1, i + 49, j + 30, 20, 20, StringUtils.EMPTY));
-        this.addButton(new FilterButton(2, i + 107, j + 30, 20, 20, StringUtils.EMPTY));
-        this.addButton(new FilterButton(3, i + 135, j + 30, 20, 20, StringUtils.EMPTY));
+        this.addButton(new FilterButton(0, i + 21, j + 48, 20, 20, StringUtils.EMPTY));
+        this.addButton(new FilterButton(1, i + 49, j + 48, 20, 20, StringUtils.EMPTY));
+        this.addButton(new FilterButton(2, i + 107, j + 48, 20, 20, StringUtils.EMPTY));
+        this.addButton(new FilterButton(3, i + 135, j + 48, 20, 20, StringUtils.EMPTY));
     }
 
     @Override
