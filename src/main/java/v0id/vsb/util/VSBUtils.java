@@ -1,5 +1,6 @@
 package v0id.vsb.util;
 
+import com.google.common.base.Strings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Container;
@@ -30,6 +31,31 @@ import java.util.stream.Stream;
 
 public class VSBUtils
 {
+    public static boolean areStringsEqual(String s1, String s2)
+    {
+        if (Strings.isNullOrEmpty(s1))
+        {
+            return Strings.isNullOrEmpty(s2);
+        }
+
+        return s1.equals(s2);
+    }
+
+    public static <T>boolean anyMatch(T[] array, Predicate<T> matcher)
+    {
+        Objects.requireNonNull(array);
+        Objects.requireNonNull(matcher);
+        for (T t : array)
+        {
+            if (matcher.test(t))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static int[] createDefaultArray(int size, int defaultElement)
     {
         int[] ret = new int[size];

@@ -79,6 +79,12 @@ public class ClientProxy implements IProxy
                 break;
             }
 
+            case FILTER_REGEX:
+            {
+                gui = new GuiFilterRegex(stack, backpackSlot);
+                break;
+            }
+
             case ENDER_CHEST:
             {
                 Minecraft.getMinecraft().player.getInventoryEnderChest().setChestTileEntity(new TileEntityEnderChest());

@@ -53,6 +53,7 @@ public class VSBRegistryNames
         itemUpgradeSharing                                                                  = "upgrade_sharing",
         itemUpgradeLighting                                                                 = "upgrade_lighting",
         itemUpgradeCrafting                                                                 = "upgrade_crafting",
+        itemUpgradeFilterRegex                                                              = "upgrade_filter_regex",
         itemReinforcedLeather                                                               = "reinforced_leather",
         itemDragonScales                                                                    = "dragon_scales";
 

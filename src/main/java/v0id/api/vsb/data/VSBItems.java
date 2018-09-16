@@ -135,6 +135,9 @@ public class VSBItems
     @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeCrafting)
     public static final Item UPGRADE_CRAFTING = null;
 
+    @GameRegistry.ObjectHolder(VSBRegistryNames.itemUpgradeFilterRegex)
+    public static final Item UPGRADE_FILTER_REGEX = null;
+
     @GameRegistry.ObjectHolder(VSBRegistryNames.itemReinforcedLeather)
     public static final Item REINFORCED_LEATHER = null;
 

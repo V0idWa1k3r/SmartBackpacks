@@ -15,6 +15,7 @@ public class VSBTextures
             BACKPACK_ULTIMATE_UPGRADES                                                              = VSBRegistryNames.asLocation("textures/gui/backpack_ultimate_upgrades.png"),
             WIDGETS                                                                                 = VSBRegistryNames.asLocation("textures/gui/widgets.png"),
             FILTER                                                                                  = VSBRegistryNames.asLocation("textures/gui/filter.png"),
+            FILTER_REGEX                                                                            = VSBRegistryNames.asLocation("textures/gui/filter_regex.png"),
             UPGRADE_FILTERED                                                                        = VSBRegistryNames.asLocation("textures/gui/upgrade_filtered.png"),
             UPGRADE_ENDER_STORAGE                                                                   = VSBRegistryNames.asLocation("textures/gui/upgrade_ender_storage.png"),
             UPGRADE_CRAFTING                                                                        = VSBRegistryNames.asLocation("textures/gui/upgrade_crafting.png"),
@@ -32,6 +33,7 @@ public class VSBTextures
             BACKPACK_ULTIMATE_UPGRADES_LIGHT                                                        = VSBRegistryNames.asLocation("textures/gui/backpack_ultimate_upgrades_light.png"),
             WIDGETS_LIGHT                                                                           = VSBRegistryNames.asLocation("textures/gui/widgets_light.png"),
             FILTER_LIGHT                                                                            = VSBRegistryNames.asLocation("textures/gui/filter_light.png"),
+            FILTER_REGEX_LIGHT                                                                      = VSBRegistryNames.asLocation("textures/gui/filter_regex_light.png"),
             UPGRADE_FILTERED_LIGHT                                                                  = VSBRegistryNames.asLocation("textures/gui/upgrade_filtered_light.png"),
             UPGRADE_ENDER_STORAGE_LIGHT                                                             = VSBRegistryNames.asLocation("textures/gui/upgrade_ender_storage_light.png"),
             UPGRADE_CRAFTING_LIGHT                                                                  = VSBRegistryNames.asLocation("textures/gui/upgrade_crafting_light.png");

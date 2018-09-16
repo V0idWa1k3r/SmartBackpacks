@@ -111,6 +111,7 @@ public class ClientRegistry
         registerSimpleModel(VSBItems.UPGRADE_SHARING);
         registerSimpleModel(VSBItems.UPGRADE_LIGHTING);
         registerSimpleModel(VSBItems.UPGRADE_CRAFTING);
+        registerSimpleModel(VSBItems.UPGRADE_FILTER_REGEX);
         registerSimpleModel(VSBItems.REINFORCED_LEATHER);
         registerSimpleModel(VSBItems.DRAGON_SCALES);
     }
