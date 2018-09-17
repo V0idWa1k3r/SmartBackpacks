@@ -10,16 +10,20 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.FoodStats;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.CapabilityItemHandler;
 import v0id.api.vsb.capability.IFilter;
 import v0id.api.vsb.data.VSBRegistryNames;
 import v0id.api.vsb.item.IBackpackWrapper;
 import v0id.api.vsb.item.IUpgradeWrapper;
+import v0id.vsb.util.Lazy;
 import v0id.vsb.util.VSBUtils;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +31,15 @@ import java.util.Objects;
 public class UpgradeFeeding extends UpgradeFiltered
 {
     private final Field fieldItemFood_healAmount = VSBUtils.getFieldSafe(ItemFood.class, "healAmount", "field_77853_b");
+    private final Lazy<Class<?>> class_NutrientUtils = new Lazy<>(() -> VSBUtils.getOptionalClass("ca.wescook.nutrition.nutrients.NutrientUtils", () -> Loader.isModLoaded("nutrition")));
+    private final Lazy<Class<?>> class_CapabilityManager = new Lazy<>(() -> VSBUtils.getOptionalClass("ca.wescook.nutrition.capabilities.CapabilityManager", () -> Loader.isModLoaded("nutrition")));
+    private final Lazy<Class<?>> class_INutrientManager = new Lazy<>(() -> VSBUtils.getOptionalClass("ca.wescook.nutrition.capabilities.INutrientManager", () -> Loader.isModLoaded("nutrition")));
+    private final Lazy<Field> capabilityManager_NutritionCapability = new Lazy<>(() -> VSBUtils.getFieldSafe(class_CapabilityManager.get(), "NUTRITION_CAPABILITY"));
+    private final Lazy<Method> nutrientUtils_getFoodNutrients = new Lazy<>(() -> VSBUtils.getMethodSafe(class_NutrientUtils.get(), new Class[]{ ItemStack.class }, "getFoodNutrients"));
+    private final Lazy<Method> nutrientUtils_calculateNutrition = new Lazy<>(() -> VSBUtils.getMethodSafe(class_NutrientUtils.get(), new Class[]{ ItemStack.class, List.class }, "calculateNutrition"));
+    private final Lazy<Method> iNutrientManager_add = new Lazy<>(() -> VSBUtils.getMethodSafe(class_INutrientManager.get(), new Class[]{ List.class, float.class }, "add"));
+    private final Lazy<Capability> nutritionCapability = new Lazy<>(() -> (Capability) VSBUtils.getFieldValue(capabilityManager_NutritionCapability.get(), null));
+
     public UpgradeFeeding()
     {
         super(VSBRegistryNames.itemUpgradeFeeding);
@@ -100,8 +113,24 @@ public class UpgradeFeeding extends UpgradeFiltered
                 {
                     ItemStack food = backpack.getInventory().getStackInSlot(highestSlot);
                     ItemFood foodItem = (ItemFood) food.getItem();
+                    ItemStack stack = food.copy();
+                    stack.setCount(1);
                     foodItem.onItemUseFinish(food, pulsar.world, (EntityLivingBase) pulsar);
                     backpack.markInventoryDirty();
+                    if (Loader.isModLoaded("nutrition"))
+                    {
+                        try
+                        {
+                            List nutrients = (List) VSBUtils.invokeMethod(nutrientUtils_getFoodNutrients.get(), null, stack);
+                            float nutValue = (float) VSBUtils.invokeMethod(nutrientUtils_calculateNutrition.get(), null, stack, nutrients);
+                            Object cap = pulsar.getCapability(nutritionCapability.get(), null);
+                            VSBUtils.invokeMethod(iNutrientManager_add.get(), cap, nutrients, nutValue);
+                        }
+                        catch (Exception ex)
+                        {
+                            FMLCommonHandler.instance().raiseException(ex, "VSB caught an error trying to reflect Nutrition", false);
+                        }
+                    }
                 }
             }
         }

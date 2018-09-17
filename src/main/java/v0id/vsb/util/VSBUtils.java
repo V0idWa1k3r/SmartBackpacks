@@ -18,10 +18,7 @@ import v0id.api.vsb.item.IUpgradeWrapper;
 import v0id.vsb.item.upgrade.UpgradeHotbarSwapper;
 import v0id.vsb.item.upgrade.UpgradeNesting;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.function.BooleanSupplier;
@@ -31,6 +28,58 @@ import java.util.stream.Stream;
 
 public class VSBUtils
 {
+    public static Object invokeMethod(Method method, Object instance, Object... params)
+    {
+        try
+        {
+            return method.invoke(instance, params);
+        }
+        catch (IllegalAccessException ex)
+        {
+            try
+            {
+                method.setAccessible(true);
+                return method.invoke(instance, params);
+            }
+            catch (IllegalAccessException e)
+            {
+                FMLCommonHandler.instance().raiseException(e, "Impossible reflection exception thrown", true);
+            }
+            catch (InvocationTargetException e)
+            {
+                FMLCommonHandler.instance().raiseException(e, "Invalid parameters passed to method!", true);
+            }
+        }
+        catch (InvocationTargetException e)
+        {
+            FMLCommonHandler.instance().raiseException(e, "Invalid parameters passed to method!", true);
+        }
+
+        return null;
+    }
+
+    public static Object getFieldValue(Field field, Object instance)
+    {
+        try
+        {
+            return field.get(instance);
+        }
+        catch (IllegalAccessException ex)
+        {
+            try
+            {
+                field.setAccessible(true);
+                return field.get(instance);
+            }
+            catch (IllegalAccessException e)
+            {
+                FMLCommonHandler.instance().raiseException(e, "Impossible reflection exception thrown", true);
+            }
+        }
+
+        return null;
+    }
+
     public static boolean areStringsEqual(String s1, String s2)
     {
         if (Strings.isNullOrEmpty(s1))

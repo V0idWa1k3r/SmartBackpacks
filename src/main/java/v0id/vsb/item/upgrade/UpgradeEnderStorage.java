@@ -13,7 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -31,7 +30,6 @@ import v0id.vsb.util.Lazy;
 import v0id.vsb.util.VSBUtils;
 
 import javax.annotation.Nullable;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
@@ -283,40 +281,6 @@ public class UpgradeEnderStorage extends UpgradeFiltered
         tooltip.addAll(Arrays.asList(I18n.format("vsb.txt.upgrade.ender_storage.desc").split("\\|")));
     }
 
-    private Object tryInvokeMethod(Method m, Object instance, Object... params)
-    {
-        if (m == null)
-        {
-            throw new NullPointerException("Supplied method was null, should be impossible.");
-        }
-
-        try
-        {
-            return m.invoke(instance, params);
-        }
-        catch (IllegalAccessException ex)
-        {
-            m.setAccessible(true);
-            try
-            {
-                return m.invoke(instance, params);
-            }
-            catch (IllegalAccessException e)
-            {
-                FMLCommonHandler.instance().raiseException(e, "Impossible reflection exception thrown", true);
-            }
-            catch (InvocationTargetException e)
-            {
-                FMLCommonHandler.instance().raiseException(e, "Unable to reflect frequency class!", true);
-            }
-        }
-        catch (InvocationTargetException e)
-        {
-            FMLCommonHandler.instance().raiseException(e, "Unable to reflect frequency class!", true);
-        }
-
-        return null;
-    }
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
@@ -379,9 +343,9 @@ public class UpgradeEnderStorage extends UpgradeFiltered
                     String dyeName2 = this.dyeToColour(dye2);
                     if (dyeName0 != null && dyeName1 != null && dyeName2 != null)
                     {
-                        Object frequency = this.tryInvokeMethod(frequency_fromString.get(), null, dyeName0, dyeName1, dyeName2);
-                        Object enderStorageManager = this.tryInvokeMethod(enderStorageManager_instance.get(), null, false);
-                        Object storage = this.tryInvokeMethod(enderStorageManager_getStorage.get(), enderStorageManager, frequency, "item");
+                        Object frequency = VSBUtils.invokeMethod(frequency_fromString.get(), null, dyeName0, dyeName1, dyeName2);
+                        Object enderStorageManager = VSBUtils.invokeMethod(enderStorageManager_instance.get(), null, false);
+                        Object storage = VSBUtils.invokeMethod(enderStorageManager_getStorage.get(), enderStorageManager, frequency, "item");
                         if (storage instanceof IInventory)
                         {
                             IItemHandler itemHandler = new InvWrapper((IInventory) storage);
@@ -402,7 +366,7 @@ public class UpgradeEnderStorage extends UpgradeFiltered
                     String dyeCode2 = this.dyeToCode(dye2);
                     if (dyeCode0 != null && dyeCode1 != null && dyeCode2 != null)
                     {
-                        Object chest = this.tryInvokeMethod(chestHelper_getChest.get(), null, ticker.world, "all", dyeCode0 + dyeCode1 + dyeCode2);
+                        Object chest = VSBUtils.invokeMethod(chestHelper_getChest.get(), null, ticker.world, "all", dyeCode0 + dyeCode1 + dyeCode2);
                         if (chest instanceof IInventory)
                         {
                             IItemHandler itemHandler = new InvWrapper((IInventory) chest);
