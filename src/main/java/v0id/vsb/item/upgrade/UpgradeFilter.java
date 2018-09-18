@@ -1,5 +1,6 @@
 package v0id.vsb.item.upgrade;
 
+import com.google.common.base.Strings;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +15,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+import net.minecraftforge.common.util.Constants;
+import v0id.api.vsb.capability.IFilter;
 import v0id.api.vsb.capability.VSBCaps;
 import v0id.api.vsb.data.VSBRegistryNames;
 import v0id.vsb.capability.Filter;
@@ -55,6 +58,39 @@ public class UpgradeFilter extends ItemSimple
     {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.addAll(Arrays.asList(I18n.format("vsb.txt.upgrade.filter.desc").split("\\|")));
+        for (int i = 0; i < 6; ++i)
+        {
+            tooltip.add(Strings.repeat(" ", 20));
+        }
+    }
+
+    @Nullable
+    @Override
+    public NBTTagCompound getNBTShareTag(ItemStack stack)
+    {
+        NBTTagCompound tag = super.getNBTShareTag(stack);
+        IFilter filter = IFilter.of(stack);
+        if (filter != null)
+        {
+            if (tag == null)
+            {
+                tag = new NBTTagCompound();
+                tag.setTag("filter", filter.serializeNBT());
+            }
+        }
+
+        return tag;
+    }
+
+    @Override
+    public void readNBTShareTag(ItemStack stack, @Nullable NBTTagCompound nbt)
+    {
+        super.readNBTShareTag(stack, nbt);
+        IFilter filter = IFilter.of(stack);
+        if (nbt != null && filter != null && nbt.hasKey("filter", Constants.NBT.TAG_COMPOUND))
+        {
+            filter.deserializeNBT(nbt.getCompoundTag("filter"));
+        }
     }
 
     @Nullable

@@ -1,5 +1,6 @@
 package v0id.vsb.item.upgrade;
 
+import com.google.common.base.Strings;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -57,6 +58,10 @@ public class UpgradeFilterRegex extends ItemSimple
     {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.addAll(Arrays.asList(I18n.format("vsb.txt.upgrade.filter_regex.desc").split("\\|")));
+        for (int i = 0; i < 4; ++i)
+        {
+            tooltip.add(Strings.repeat(" ", 27));
+        }
     }
 
     @Nullable
