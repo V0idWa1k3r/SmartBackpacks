@@ -52,6 +52,30 @@ public class VSBCfg
 
     public static boolean useLightUI = false;
 
+    @Config.RangeInt(min = 0, max = 18)
+    public static int basicBackpackInventorySize = 18;
+
+    @Config.RangeInt(min = 0, max = 36)
+    public static int reinforcedBackpackInventorySize = 36;
+
+    @Config.RangeInt(min = 0, max = 54)
+    public static int advancedBackpackInventorySize = 54;
+
+    @Config.RangeInt(min = 0, max = 117)
+    public static int ultimateBackpackInventorySize = 117;
+
+    @Config.RangeInt(min = 0, max = 5)
+    public static int basicBackpackUpgradesSize = 5;
+
+    @Config.RangeInt(min = 0, max = 9)
+    public static int reinforcedBackpackUpgradesSize = 9;
+
+    @Config.RangeInt(min = 0, max = 14)
+    public static int advancedBackpackUpgradesSize = 14;
+
+    @Config.RangeInt(min = 0, max = 18)
+    public static int ultimateBackpackUpgradesSize = 18;
+
     @Mod.EventBusSubscriber(modid = VSBRegistryNames.MODID)
     public static class ConfigHandler
     {

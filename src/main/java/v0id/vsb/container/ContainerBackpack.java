@@ -14,6 +14,7 @@ import v0id.api.vsb.capability.IBackpack;
 import v0id.api.vsb.item.EnumBackpackType;
 import v0id.api.vsb.item.IUpgrade;
 import v0id.api.vsb.item.IUpgradeWrapper;
+import v0id.vsb.config.VSBCfg;
 import v0id.vsb.item.upgrade.UpgradeNesting;
 
 import javax.annotation.Nonnull;
@@ -133,6 +134,7 @@ public abstract class ContainerBackpack extends Container
             int offsetY = 0;
             int slotsPerRow = 9;
             int rows = 2;
+            int maxSlots = 0;
             IBackpack iBackpack = IBackpack.of(backpack);
             this.backpackType = iBackpack.createWrapper().getBackpackType();
             switch (iBackpack.createWrapper().getBackpackType())
@@ -140,6 +142,7 @@ public abstract class ContainerBackpack extends Container
                 case BASIC:
                 {
                     offsetY = 50;
+                    maxSlots = VSBCfg.basicBackpackInventorySize;
                     break;
                 }
 
@@ -147,6 +150,7 @@ public abstract class ContainerBackpack extends Container
                 {
                     rows = 4;
                     offsetY = 84;
+                    maxSlots = VSBCfg.reinforcedBackpackInventorySize;
                     break;
                 }
 
@@ -154,6 +158,7 @@ public abstract class ContainerBackpack extends Container
                 {
                     rows = 6;
                     offsetY = 120;
+                    maxSlots = VSBCfg.advancedBackpackInventorySize;
                     break;
                 }
 
@@ -163,6 +168,7 @@ public abstract class ContainerBackpack extends Container
                     rows = 9;
                     offsetX = 44;
                     offsetY = 174;
+                    maxSlots = VSBCfg.ultimateBackpackInventorySize;
                     break;
                 }
             }
@@ -171,6 +177,11 @@ public abstract class ContainerBackpack extends Container
             {
                 for (int x = 0; x < slotsPerRow; ++x)
                 {
+                    if (x + y * slotsPerRow > maxSlots)
+                    {
+                        continue;
+                    }
+
                     this.addSlotToContainer(new SlotItemHandlerBackpack(iBackpack.getInventory(), x + y * slotsPerRow, 8 + x * 18, 8 + y * 18));
                 }
             }
@@ -242,7 +253,7 @@ public abstract class ContainerBackpack extends Container
             {
                 case BASIC:
                 {
-                    for (int i = 0; i < 5; ++i)
+                    for (int i = 0; i < VSBCfg.basicBackpackUpgradesSize; ++i)
                     {
                         this.addSlotToContainer(new SlotUpgrade(iBackpack.getUpgrades(), i, 44 + i * 18, 8));
                     }
@@ -253,7 +264,7 @@ public abstract class ContainerBackpack extends Container
 
                 case REINFORCED:
                 {
-                    for (int i = 0; i < 9; ++i)
+                    for (int i = 0; i < VSBCfg.reinforcedBackpackUpgradesSize; ++i)
                     {
                         this.addSlotToContainer(new SlotUpgrade(iBackpack.getUpgrades(), i, 8 + i * 18, 8));
                     }
@@ -264,23 +275,24 @@ public abstract class ContainerBackpack extends Container
 
                 case ADVANCED:
                 {
-                    for (int i = 0; i < 9; ++i)
+                    for (int i = 0; i < Math.min(9, VSBCfg.advancedBackpackUpgradesSize); ++i)
                     {
                         this.addSlotToContainer(new SlotUpgrade(iBackpack.getUpgrades(), i, 8 + i * 18, 8));
                     }
 
-                    for (int i = 0; i < 5; ++i)
+                    for (int i = 0; i < VSBCfg.advancedBackpackUpgradesSize - 9; ++i)
                     {
                         this.addSlotToContainer(new SlotUpgrade(iBackpack.getUpgrades(), 9 + i, 44 + i * 18, 26));
                     }
 
                     offsetY = 50;
+
                     break;
                 }
 
                 case ULTIMATE:
                 {
-                    for (int i = 0; i < 18; ++i)
+                    for (int i = 0; i < VSBCfg.ultimateBackpackUpgradesSize; ++i)
                     {
                         this.addSlotToContainer(new SlotUpgrade(iBackpack.getUpgrades(), i, 8 + (i % 9) * 18, 8 + (i / 9) * 18));
                     }

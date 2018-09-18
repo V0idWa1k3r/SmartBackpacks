@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import v0id.api.vsb.capability.IFilter;
 import v0id.vsb.container.ContainerFilter;
+import v0id.vsb.container.ContainerFilterRegex;
 
 public class ChangeFilterParam implements IMessage
 {
@@ -43,9 +44,9 @@ public class ChangeFilterParam implements IMessage
             receiver.getServerWorld().addScheduledTask(() ->
             {
                 Container openContainer = receiver.openContainer;
-                if (openContainer instanceof ContainerFilter)
+                if (openContainer instanceof ContainerFilter || openContainer instanceof ContainerFilterRegex)
                 {
-                    IFilter filter = IFilter.of(((ContainerFilter) openContainer).filter);
+                    IFilter filter = IFilter.of(openContainer instanceof ContainerFilter ? ((ContainerFilter) openContainer).filter : ((ContainerFilterRegex) openContainer).filter);
                     switch (message.index)
                     {
                         case 0:
