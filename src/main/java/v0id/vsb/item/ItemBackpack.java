@@ -83,8 +83,16 @@ public class ItemBackpack extends Item implements IGUIOpenable
 
         for (EnumDyeColor dyeColor : EnumDyeColor.values())
         {
+            float[] dyeColorValues = dyeColor.getColorComponentValues();
+
+            int r = (int)(dyeColorValues[0] * 255.0F);
+            int g = (int)(dyeColorValues[1] * 255.0F);
+            int b = (int)(dyeColorValues[2] * 255.0F);
+
+            int finalColor = ((r << 8) + g << 8) + b;
+
             ItemStack is = new ItemStack(this, 1, 0);
-            IBackpack.of(is).createWrapper().setColor(dyeColor.getColorValue());
+            IBackpack.of(is).createWrapper().setColor(finalColor);
             items.add(is);
         }
     }
