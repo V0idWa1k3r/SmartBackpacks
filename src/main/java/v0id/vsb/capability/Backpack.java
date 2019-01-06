@@ -3,6 +3,7 @@ package v0id.vsb.capability;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
@@ -325,6 +326,7 @@ public class Backpack implements IBackpack
         private final ItemStack stack;
         private final int slots;
         private final ItemStackHandler inventory;
+        private boolean isInitialized;
 
         private NBTItemHandler(ItemStack stack, int slots)
         {
@@ -340,12 +342,7 @@ public class Backpack implements IBackpack
                 }
             };
 
-            if (!stack.hasTagCompound())
-            {
-                stack.setTagCompound(new NBTTagCompound());
-            }
-
-            if (stack.getTagCompound().hasKey("vsb:nbtItemHandler"))
+            if (stack.hasTagCompound() && stack.getTagCompound().hasKey("vsb:nbtItemHandler"))
             {
                 this.inventory.deserializeNBT(stack.getTagCompound().getCompoundTag("vsb:nbtItemHandler"));
             }
@@ -361,6 +358,15 @@ public class Backpack implements IBackpack
         @Override
         public ItemStack getStackInSlot(int slot)
         {
+            if (!this.isInitialized)
+            {
+                this.isInitialized = true;
+                if (this.stack.hasTagCompound() && this.stack.getTagCompound().hasKey("vsb:nbtItemHandler", Constants.NBT.TAG_COMPOUND))
+                {
+                    this.inventory.deserializeNBT(this.stack.getTagCompound().getCompoundTag("vsb:nbtItemHandler"));
+                }
+            }
+
             return this.inventory.getStackInSlot(slot);
         }
 
@@ -415,13 +421,20 @@ public class Backpack implements IBackpack
         @Override
         public void deserializeNBT(NBTTagCompound nbt)
         {
-            if (nbt.hasKey("vsb:nbtItemHandler"))
+            if (this.stack.hasTagCompound() && this.stack.getTagCompound().hasKey("vsb:nbtItemHandler", Constants.NBT.TAG_COMPOUND))
             {
-                this.inventory.deserializeNBT(nbt.getCompoundTag("vsb:nbtItemHandler"));
+                this.inventory.deserializeNBT(this.stack.getTagCompound().getCompoundTag("vsb:nbtItemHandler"));
             }
             else
             {
-                this.inventory.deserializeNBT(nbt);
+                if (nbt.hasKey("vsb:nbtItemHandler"))
+                {
+                    this.inventory.deserializeNBT(nbt.getCompoundTag("vsb:nbtItemHandler"));
+                }
+                else
+                {
+                    this.inventory.deserializeNBT(nbt);
+                }
             }
         }
     }
