@@ -342,10 +342,7 @@ public class Backpack implements IBackpack
                 }
             };
 
-            if (stack.hasTagCompound() && stack.getTagCompound().hasKey("vsb:nbtItemHandler"))
-            {
-                this.inventory.deserializeNBT(stack.getTagCompound().getCompoundTag("vsb:nbtItemHandler"));
-            }
+            this.deserializeFromStack();
         }
 
         @Override
@@ -354,17 +351,27 @@ public class Backpack implements IBackpack
             return this.slots;
         }
 
+        private void deserializeFromStack()
+        {
+            if (!this.stack.hasTagCompound() || !this.stack.getTagCompound().hasKey("vsb:nbtItemHandler", Constants.NBT.TAG_COMPOUND))
+            {
+                return;
+            }
+
+            this.isInitialized = true;
+
+            NBTTagCompound tag = this.stack.getTagCompound().getCompoundTag("vsb:nbtItemHandler");
+            tag.removeTag("Size");
+            this.inventory.deserializeNBT(this.stack.getTagCompound().getCompoundTag("vsb:nbtItemHandler"));
+        }
+
         @Nonnull
         @Override
         public ItemStack getStackInSlot(int slot)
         {
             if (!this.isInitialized)
             {
-                this.isInitialized = true;
-                if (this.stack.hasTagCompound() && this.stack.getTagCompound().hasKey("vsb:nbtItemHandler", Constants.NBT.TAG_COMPOUND))
-                {
-                    this.inventory.deserializeNBT(this.stack.getTagCompound().getCompoundTag("vsb:nbtItemHandler"));
-                }
+                this.deserializeFromStack();
             }
 
             return this.inventory.getStackInSlot(slot);
@@ -409,13 +416,16 @@ public class Backpack implements IBackpack
                 this.stack.setTagCompound(new NBTTagCompound());
             }
 
-            this.stack.getTagCompound().setTag("vsb:nbtItemHandler", this.inventory.serializeNBT());
+            NBTTagCompound tag = this.serializeNBT();
+            this.stack.getTagCompound().setTag("vsb:nbtItemHandler", tag);
         }
 
         @Override
         public NBTTagCompound serializeNBT()
         {
-            return this.inventory.serializeNBT();
+            NBTTagCompound tag = this.inventory.serializeNBT();
+            tag.removeTag("Size");
+            return tag;
         }
 
         @Override
